@@ -1,0 +1,13 @@
+EO
+EOF
+Makefile
+README.md
+includes
+lol
+minishell
+minishell.dSYM
+note.txt
+out
+outfile
+srcs
+tests
