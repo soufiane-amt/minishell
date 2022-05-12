@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 18:21:49 by samajat           #+#    #+#             */
-/*   Updated: 2022/03/31 20:50:39 by samajat          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "minishell.h"
 
@@ -33,3 +22,16 @@ t_token	*ft_tokenlast(t_token *token)
 			temp = temp->next;
 	return (temp);
 }
+
+t_env	*ft_env_last(t_env *lst)
+{
+	t_env	*current;
+
+	current = lst;
+	if (lst == NULL)
+		return (NULL);
+	while (current->next)
+		current = current->next;
+	return (current);
+}
+

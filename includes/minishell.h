@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/25 01:27:28 by samajat          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef MINISHELL_H
 #define MINISHELL_H
@@ -23,7 +12,8 @@
 #include <stddef.h>
 #include <signal.h>
 #include <string.h>
-# include <fcntl.h>
+#include <fcntl.h>
+#include <limits.h>
 #include <termios.h>
 
 //SPECIAL CHARACTERS
@@ -69,6 +59,13 @@
 //file not found error
 //Global variable
 
+typedef struct s_env
+{
+    char *variable;
+    char *value;
+    struct s_env *next;
+}   t_env; // t_cmd/t_env *enver/all enverment variable
+
 ////Create a linked list 
 typedef struct s_list
 {
@@ -101,6 +98,7 @@ typedef struct s_data
 	int			input_piped;
 	int			spliter_sucess;
 	t_status	status;
+    t_env       *enver;
 }   t_data;
 
 
@@ -157,16 +155,15 @@ void display_file(int    fd);
 void    ft_collect_data(char **env);
 
 //builtin funcs
-int		is_rebuilt_cmd();
-void	ft_cd();
-void	ft_echo();
-void	ft_env();
-void	ft_exit();
-void	ft_export();
-void	ft_pwd();
-void	ft_unset();
-void	exec_rebuilt_cmd();
-int		is_rebuilt_cmd();
+void    ft_cd(t_data *data, t_cmd *cmd);
+void    ft_echo(t_data *data, t_cmd *cmd);
+void    ft_env(t_data *data, int is);
+void    ft_exit(t_cmd *cmd, t_data *data);
+void    ft_export(t_data *data, t_cmd *cmd);
+char    *ft_pwd(t_data *data);
+void    ft_unset(t_data *data, t_cmd *cmd);
+void	exec_rebuilt_cmd(t_data *data, t_cmd *cmd);
+int     is_rebuilt_cmd(t_cmd *cmd);
 
 //utils
 int		ft_strlen(const char *str);
@@ -179,9 +176,6 @@ void	display_file(int fd);
 int		ft_override_spaces(char *s, int *i);
 void	add_string(char **str, char  *added);
 char	*ft_strchr(char const *str, int c);
-
-// char    *ft_cpy_until(char *str, char *delimter);
-char	*ft_get_word_after_c(char  *str, char c);
 int		ft_contain(char  *str, char *to_look_for);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
@@ -191,6 +185,8 @@ int		ft_ispace (char c);
 int		ft_is_quote (char   c);
 int		ft_is_redi (char   c);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+int	    ft_strcpy(char *dst, const char *src);
+char    *_char(char *str, t_data *data);
 
 //main funcs
 int		open_prompt(char **env);
@@ -207,6 +203,12 @@ void	ft_lstprint(t_list *lst);
 int		ft_lst_contain(t_list **lst, char *str);
 void	ft_lstclear(t_list **lst, int   free_content);
 void	ft_lstdelone(t_list **lst, int   free_content);
+// lst env
+t_env	*ft_env_last(t_env *lst);
+void	ft_env_tadd_back(t_env **lst, t_env *new);
+t_env	*ft_env_new(char *var, char *val);
+void	ft_env_clear(t_env **lst);
+
 
 //t_token
 t_token     *ft_tokenlast(t_token *lst);
@@ -258,5 +260,13 @@ int     check_user_input (char  *str);
 t_cmd   *ft_init_cmd();
 t_token     **init_token();
 void    ft_init_t_data (char	**env);
+
+//enver export
+void get_env_while_prompt(t_data *data,  char c);
+
+//utils expo
+int size_var_val(char *str, int x, char c);
+void cpy_var_val(char *str, char *var, char *val, char c);
+
 
 #endif

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 03:40:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/25 02:02:39 by samajat          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 
 #include "minishell.h"
 
@@ -45,3 +33,16 @@ t_token	*ft_token_new(t_spliter *t_sep)
 	node -> next = NULL;
 	return (node);
 }
+
+t_env	*ft_env_new(char *var, char *val)
+{
+	t_env	*first_list;
+	first_list = (t_env *)malloc(sizeof(t_env));
+	if (first_list == NULL)
+		return (NULL);
+	first_list->variable = var;
+	first_list->value = val;
+	first_list->next = NULL;
+	return (first_list);
+}
+
