@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/14 14:37:01 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/14 17:59:16 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,8 @@ static int go(char *str)
 {
 	char c;
 
-	c = NULL;
 	if (who_first(str) == 1)
-		c = '"';
+		c = '\"';
 	else if (who_first(str) == 0)
 		c = '\'';
 	if (who_first(str) == -1)

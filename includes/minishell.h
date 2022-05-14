@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 16:00:30 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:00:55 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ void    ft_collect_data(char **env);
 //builtin funcs
 void    ft_cd(t_cmd *cmd);
 void    ft_echo(t_cmd *cmd);
-void    ft_env(int is);
+void    ft_env(t_cmd *cmd ,int is);
 void    ft_exit(t_cmd *cmd);
 void    ft_export(t_cmd *cmd);
 char    *ft_pwd();
@@ -199,6 +199,7 @@ char	*ft_charjoin(char *s1, char c);
 int     who_first(char *str);
 int     cpy_var(char *str, char *var, char c);
 int     size_var(char *str, char c);
+int		is_ex12(char *str, char c);
 //main funcs
 int		open_prompt(char **env);
 
@@ -273,7 +274,7 @@ t_token     **init_token();
 void    ft_init_t_data (char	**env);
 
 //enver export
-void get_env_while_prompt(t_data *data,  char c);
+void get_env_while_prompt(char c);
 
 //utils expo
 int size_var_val(char *str, int x, char c);

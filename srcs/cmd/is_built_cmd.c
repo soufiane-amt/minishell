@@ -6,13 +6,13 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:38:28 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/19 21:33:50 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/14 17:52:48 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_rebuilt_cmd(t_cmd *cmd)
+int	is_built_cmd(t_cmd *cmd)
 {
 	if(!ft_strcmp(cmd->cmd, "cd") || !ft_strcmp(cmd->cmd, "CD"))
 		return (1);
