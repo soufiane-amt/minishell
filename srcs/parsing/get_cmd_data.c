@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 19:07:02 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/04/24 23:56:39 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/14 19:00:07 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void     get_cmd_args(t_cmd *cmd)
     temp = cmd->ex_elements->next;
     while (temp)
     {
-        if((((char *)temp ->content)[0] != '-') && !ft_is_redi((((char *)temp ->content)[0])))
+        if(!ft_is_redi((((char *)temp ->content)[0])))
         {
             arg = ft_strdup((char *)temp->content);
             if (!arg)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _char.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/14 17:59:16 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:42:45 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static char *last(char *str)
 	st = strdup("");
 	while(str[i])
 	{
-		printf("***> %c\n", str[i]);
 		if (str[i] == -7)
 		{
 			var = malloc(size_var(str, '$') + 1);
