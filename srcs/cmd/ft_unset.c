@@ -6,13 +6,13 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:03:57 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/10 19:54:33 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/14 15:00:00 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void    ft_unset(t_data *data, t_cmd *cmd)
+void    ft_unset(t_cmd *cmd)
 {
     t_env *e;
     t_list *arg;
@@ -27,7 +27,7 @@ void    ft_unset(t_data *data, t_cmd *cmd)
     }
     while (arg)
     {
-        e = data->enver;
+        e = data.enver;
         while (e != NULL)
         {
             var = e->variable;

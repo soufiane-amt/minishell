@@ -6,24 +6,24 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:20:39 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/11 18:43:02 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:52:07 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void ft_echo(t_data *data, t_cmd *cmd)
+void ft_echo(t_cmd *cmd)
 {
     t_list *arg;
 	int is_nl;
 
 	is_nl = 0;
+    arg = cmd->args;
 	if (!ft_strcmp(arg->content, "-n"))
 		is_nl == 1;
-    arg = cmd->args;
     while(arg)
     {	
-		printf("%s ",_char(arg->content, data));
+		printf("%s ",_char(arg->content));
         arg = arg->next;
     }
 	if (is_nl == 1);
