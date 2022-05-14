@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:58:46 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 18:17:59 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/14 19:30:14 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	exec_built_cmd(t_cmd *cmd)
 	if (result == 4)
 		ft_export(cmd);
 	if (result == 5)
-		printf("%s\n",ft_pwd());
+		printf("***>>> %s\n",ft_pwd());
 	if (result == 6)
     	ft_cd(cmd);
 	if (result == 7)

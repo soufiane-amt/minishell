@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:18:24 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/24 23:49:18 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/14 19:27:03 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void	generate_paths()
 	}
 }
 
-void    ft_collect_data(char  **env)
+void    ft_collect_data()
 {
     int     i;
     char    *f_str;
 
-    ft_init_t_data (env);
+    ft_init_t_data ();
     f_str = data.input;
     data.input = ft_strtrim(data.input, " ");
     if (!data.input)

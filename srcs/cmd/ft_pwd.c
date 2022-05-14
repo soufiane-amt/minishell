@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:03:53 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 14:59:40 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/14 19:16:27 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@ char *set_pwd(char *new_path)
 
 char *ft_pwd()
 {
-		char cwd[PATH_MAX];
-		
-		if (getcwd(cwd, sizeof(cwd)) == NULL)
-			perror ("can't get current path\n");
-		else
-			return (set_pwd(cwd));
-		return (set_pwd(cwd));
+    char cwd[PATH_MAX];
+    // printf("%s\n", getcwd(cwd, sizeof(cwd)));
+    if (getcwd(cwd, sizeof(cwd)) == NULL)
+    {
+        perror ("can't get current path\n");
+        return (NULL);
+    }
+    return (set_pwd(cwd));
 }

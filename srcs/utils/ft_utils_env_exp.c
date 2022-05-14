@@ -6,33 +6,29 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:01:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/12 23:01:57 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/14 20:47:25 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "minishell.h"
 
-void get_env_while_prompt( char c)
+char *get_env(char *var)
 {
-    int i;
-    char *var;
-    char *val;
+    t_env *e;
 
-    i = 0;
-    data.enver = NULL;
-    while (data.env[i])
+    e = data.enver;
+    while (e)
     {
-        var = malloc(size_var_val(data.env[i], 1, c) + 1);
-        val = malloc(size_var_val(data.env[i], 0, c) + 1);
-        cpy_var_val(data.env[i], var, val, '=');
-        ft_env_tadd_back(&(data.enver), ft_env_new(var, val));
-        i++;
+        if (!ft_strcmp(e->variable, var))
+		{
+			return (e->value);
+			break ;
+		}
+        e = e->next;
     }
-    free(var);
-    free(val);
+	return ("");
 }
-
 void cpy_var_val(char *str, char *var, char *val, char c)
 {
     int i;
@@ -57,6 +53,29 @@ void cpy_var_val(char *str, char *var, char *val, char c)
       val[i++] = str[j++];
     val[i] = '\0';
 }
+
+void get_env_while_prompt( char c, char **env)
+{
+    int i;
+    char *var;
+    char *val;
+
+    i = 0;
+    data.enver = malloc(sizeof(t_env *));
+    data.env = env;
+    while (data.env[i])
+    {
+        var = malloc(size_var_val(data.env[i], 1, c) + 1);
+        val = malloc(size_var_val(data.env[i], 0, c) + 1);
+        cpy_var_val(data.env[i], var, val, '=');
+        ft_env_tadd_back(&(data.enver), ft_env_new(var, val));
+        printf("******> %s %s\n", data.enver->variable, data.enver->value);
+        i++;
+    }
+    free(var);
+    free(val);
+}
+
 
 int size_var_val(char *str, int x, char c)
 {

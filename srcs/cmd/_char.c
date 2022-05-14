@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/14 18:42:45 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/14 19:32:44 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char *last(char *str)
 			if (!getenv(var))
 				st = ft_strjoin(st, "");
 			else
-				st = ft_strjoin(st, getenv(var));
+				st = ft_strjoin(st, get_env(var));
 			free(var);
 		}
 		else

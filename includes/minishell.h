@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 18:20:35 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/14 19:44:53 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ typedef struct s_token
 void display_file(int    fd);
 
 //Data funcs
-void    ft_collect_data(char **env);
+void    ft_collect_data();
 
 //builtin funcs
 void    ft_cd(t_cmd *cmd);
@@ -223,6 +223,7 @@ t_env	*ft_env_last(t_env *lst);
 void	ft_env_tadd_back(t_env **lst, t_env *new);
 t_env	*ft_env_new(char *var, char *val);
 void	ft_env_clear(t_env **lst);
+int     ft_env_size(t_env *lst);
 
 
 //t_token
@@ -274,11 +275,11 @@ int     check_user_input (char  *str);
 //init
 t_cmd   *ft_init_cmd();
 t_token     **init_token();
-void    ft_init_t_data (char	**env);
+void    ft_init_t_data ();
 
 //enver export
-void get_env_while_prompt(char c);
-
+void get_env_while_prompt( char c, char **env);
+char *get_env(char *str);
 //utils expo
 int size_var_val(char *str, int x, char c);
 void cpy_var_val(char *str, char *var, char *val, char c);
