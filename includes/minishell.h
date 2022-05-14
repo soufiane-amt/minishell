@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 22:55:38 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/12 22:55:40 by samajat          ###   ########.fr       */
+/*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
+/*   Updated: 2022/05/14 14:32:44 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,14 +167,14 @@ void display_file(int    fd);
 void    ft_collect_data(char **env);
 
 //builtin funcs
-void    ft_cd(t_data *data, t_cmd *cmd);
-void    ft_echo(t_data *data, t_cmd *cmd);
-void    ft_env(t_data *data, int is);
-void    ft_exit(t_cmd *cmd, t_data *data);
-void    ft_export(t_data *data, t_cmd *cmd);
-char    *ft_pwd(t_data *data);
-void    ft_unset(t_data *data, t_cmd *cmd);
-void	exec_rebuilt_cmd(t_data *data, t_cmd *cmd);
+void    ft_cd(t_cmd *cmd);
+void    ft_echo(t_cmd *cmd);
+void    ft_env(int is);
+void    ft_exit(t_cmd *cmd);
+void    ft_export(t_cmd *cmd);
+char    *ft_pwd();
+void    ft_unset(t_cmd *cmd);
+void	exec_rebuilt_cmd(t_cmd *cmd);
 int     is_rebuilt_cmd(t_cmd *cmd);
 
 //utils
@@ -193,13 +193,11 @@ char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-int		ft_ispace (char c);
-int		ft_is_quote (char   c);
-int		ft_is_redi (char   c);
-int		ft_memcmp(const void *s1, const void *s2, size_t n);
-int	    ft_strcpy(char *dst, const char *src);
-char    *_char(char *str, t_data *data);
-
+char    *_char(char *str);
+char	*ft_charjoin(char *s1, char c);
+int     who_first(char *str);
+int     cpy_var(char *str, char *var, char c);
+int     size_var(char *str, char c)
 //main funcs
 int		open_prompt(char **env);
 

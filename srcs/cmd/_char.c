@@ -6,35 +6,11 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/14 13:08:17 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:30:18 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-static char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*str;
-	int		i;
-	int		s1_s;
-	int		s2_s;
-
-	i = 0;
-	s1_s = strlen(s1);
-	s2_s = strlen(s2);
-	str = (char *) malloc (sizeof(char) * (s1_s + s2_s + 1));
-	if (!str)
-		return (NULL);
-	strlcpy(str, s1, s1_s + 1);
-	while (i < s2_s)
-	{
-		str[s1_s] = (char)s2[i];
-		s1_s++;
-		i++;
-	}
-	str[s1_s] = 0;
-	return (str);
-}
 
 static int size_var(char *str, char c)
 {
