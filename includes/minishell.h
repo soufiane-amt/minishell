@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 18:00:55 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:20:35 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,8 +174,8 @@ void    ft_exit(t_cmd *cmd);
 void    ft_export(t_cmd *cmd);
 char    *ft_pwd();
 void    ft_unset(t_cmd *cmd);
-void	exec_rebuilt_cmd(t_cmd *cmd);
-int     is_rebuilt_cmd(t_cmd *cmd);
+void	exec_built_cmd(t_cmd *cmd);
+int     is_built_cmd(t_cmd *cmd);
 
 //utils
 int		ft_strlen(const char *str);
@@ -193,6 +193,9 @@ char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+int     ft_is_redi (char   c);
+int     ft_is_quote (char   c);
+int ft_ispace (char c);
 //_char
 char    *_char(char *str);
 char	*ft_charjoin(char *s1, char c);

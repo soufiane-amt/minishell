@@ -3,24 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   exec_built.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:58:46 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 17:53:45 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:17:59 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_rebuilt_cmd(t_cmd *cmd)
+void	exec_built_cmd(t_cmd *cmd)
 {
 	int	result;
 
-	result = is_rebuilt_cmd(cmd);
-	if (result == 0)
-		strerror(127);
+	result = is_built_cmd(cmd);
 	if (result == 1)
-		ft_cd(cmd);
+		ft_unset(cmd);
 	if (result == 2)
 		ft_echo(cmd);
 	if (result == 3)
@@ -30,7 +28,7 @@ void	exec_rebuilt_cmd(t_cmd *cmd)
 	if (result == 5)
 		printf("%s\n",ft_pwd());
 	if (result == 6)
-		ft_unset(cmd);
+    	ft_cd(cmd);
 	if (result == 7)
 		ft_exit(cmd);
 }

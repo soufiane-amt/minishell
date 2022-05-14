@@ -10,19 +10,19 @@ READ= -L /goinfre/$(USER)/.brew/opt/readline/lib -lreadline
 
 RL_INCLUDE = -I /goinfre/$(USER)/.brew/opt/readline/include
 
-CMD_SRC = ft_echo exec_built is_built_cmd ft_pwd ft_env ft_export ft_unset ft_cd _char _char2 _char3
+CMD_SRC = ft_echo exec_built is_built_cmd ft_pwd ft_env ft_exit ft_export ft_unset ft_cd _char _char2 _char3
 
 DATA_SRC = free_data collect_data free_utils
 
-M_SRC =  ft_prompt main get_env
+M_SRC =  ft_prompt main
 
 CTL_SRC = ctl_c
 
 P_SRC =get_token get_cmd_data get_spliter_data redirection_handler ft_extractor
 
 U_SRC = ft_strcmp ft_strlen ft_split ft_strdup ft_substr  ft_strchr ft_utils_env_exp ft_strcpy ft_strjoin \
-		ft_contain ft_strjoin ft_strlcpy\
-		ft_strlcpy ft_strtrim ft_ispace extract_util ft_memcmp display_content\
+		ft_contain  ft_strlcpy\
+		ft_strtrim ft_ispace extract_util ft_memcmp display_content\
 		add_str  ft_putnbr_fd ft_putstr_fd\
                         
 E_SRC        =        build_cmd exec_cmd_ln execute add_path ft_open_herdoc\
@@ -33,7 +33,9 @@ LST_SRC = ft_lstadd_back ft_lstadd_front ft_lstclear \
 			ft_lst_contain \
 
 G_SRC	= get_next_line\
+
 ERR_SRC = print_error chstatus check_syntax check_redirection check_user_input\
+
 INIT_SRC = ft_init_cmd ft_init_token ft_init_t_data
 
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_rebuilt_cmd.c                                   :+:      :+:    :+:   */
+/*   is_built_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:38:28 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 17:52:48 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:12:16 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_built_cmd(t_cmd *cmd)
 {
-	if(!ft_strcmp(cmd->cmd, "cd") || !ft_strcmp(cmd->cmd, "CD"))
+    if(!ft_strcmp(cmd->cmd, "unset") || !ft_strcmp(cmd->cmd, "UNSET"))
 		return (1);
 	else if(!ft_strcmp(cmd->cmd, "echo") || !ft_strcmp(cmd->cmd, "ECHO"))
 		return (2);
@@ -24,7 +24,7 @@ int	is_built_cmd(t_cmd *cmd)
 		return (4);
 	else if(!ft_strcmp(cmd->cmd, "pwd") || !ft_strcmp(cmd->cmd, "PWD"))
 		return (5);
-	else if(!ft_strcmp(cmd->cmd, "unset") || !ft_strcmp(cmd->cmd, "UNSET"))
+    else if(!ft_strcmp(cmd->cmd, "cd") || !ft_strcmp(cmd->cmd, "CD"))
 		return (6);
 	else if(!ft_strcmp(cmd->cmd, "exit") || !ft_strcmp(cmd->cmd, "EXIT"))
 		return (7);

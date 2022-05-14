@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/12 23:00:45 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/14 18:33:59 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int open_prompt(char  **env)
 
     signal(SIGINT,ctl_c);
     signal(SIGQUIT, ctl_c);
-    //    get_env_while_prompt(data, '=');
+    get_env_while_prompt('=');
     while (1)
     {
         data.input = readline("𝖒𝖎𝖓𝖎𝖘𝖍𝖊𝖑𝖑➜");
