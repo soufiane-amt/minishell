@@ -6,11 +6,36 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:25:21 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/12 11:32:59 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:24:44 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int size_var(char *str, char c)
+{
+	int i;
+	int count;
+	
+	i = 0;
+	count = 0;
+	while(str[i])
+	{
+	  if (str[i] == c)
+		  break;
+	  i++;
+	}
+	if (str[i] == '$')
+		i++;
+	while ((str[i] && str[i] != c)
+		&& ((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')))
+	{
+		count++;
+		i++;
+
+	}
+	return (count);
+}
 
 int  cpy_var(char *str, char *var, char c)
 {
@@ -28,10 +53,10 @@ int  cpy_var(char *str, char *var, char c)
 		j++;
 	}
 	var[j] = '\0';
-	return (i);
+	return (strlen(var));
 }
 
-char	*ft_one_char_str(char c)
+static char	*ft_one_char_str(char c)
 {
 	char	*output;
 
@@ -51,7 +76,7 @@ char	*ft_charjoin(char *s1, char c)
 	if (!s1)
 		return (ft_one_char_str(c));
 	i = 0;
-	output = (char *) malloc((ft_strlen(s1) + 2) * sizeof(char));
+	output = (char *) malloc((strlen(s1) + 2) * sizeof(char));
 	if (!output)
 		return (NULL);
 	while (s1[i])
@@ -66,38 +91,18 @@ char	*ft_charjoin(char *s1, char c)
 	return (output);
 }
 
-int sh_expand(char *str, char c)
+int who_first(char *str)
 {
 	int i;
-	int is;
-	
-	is = -1;
+
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
-		if (str[i] == c)
-		{
-			if (is == -1)
-				is = 0;
-			else if (is == 0)
-				is = 1;
-			else if (is == 1)
-				is = 0;
-		}
+		if(str[i] == '\'')
+			return (0);
+		if (str[i] == '"')
+			return (1);
 		i++;
 	}
-	return (is);
-}
-char *get_var(t_data *dt, char *st)
-{
-    t_env *e;
-
-    e = dt->enver;
-    while (e)
-    {
-        if(!ft_strcmp(e->variable, st))
-            return (e->value);
-        e = e->next;
-    }
-    return ("");
+	return (-1);
 }

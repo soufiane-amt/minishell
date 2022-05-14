@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/11 18:29:16 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:27:30 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,8 +146,11 @@ int	    ft_strcpy(char *dst, const char *src);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-char    *_char(char *str, t_data *data)
-
+char    *_char(char *str);
+char	*ft_charjoin(char *s1, char c);
+int     who_first(char *str);
+int     cpy_var(char *str, char *var, char c);
+int     size_var(char *str, char c)
 //main funcs
 int open_prompt(t_data *data, char  **env);
 // ctl
