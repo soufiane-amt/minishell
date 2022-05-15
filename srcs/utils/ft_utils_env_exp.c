@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils_env_exp.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:01:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 20:47:25 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/15 12:44:52 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,19 @@ void get_env_while_prompt( char c, char **env)
     char *val;
 
     i = 0;
-    data.enver = malloc(sizeof(t_env *));
     data.env = env;
     while (data.env[i])
     {
         var = malloc(size_var_val(data.env[i], 1, c) + 1);
         val = malloc(size_var_val(data.env[i], 0, c) + 1);
-        cpy_var_val(data.env[i], var, val, '=');
-        ft_env_tadd_back(&(data.enver), ft_env_new(var, val));
-        printf("******> %s %s\n", data.enver->variable, data.enver->value);
+        if (var && val)
+            cpy_var_val(data.env[i], var, val, '=');
+        else
+            return ;
+        if(i == 0)
+           data.enver = ft_env_new(var, val);
+        else
+            ft_env_tadd_back(&(data.enver), ft_env_new(var, val));
         i++;
     }
     free(var);

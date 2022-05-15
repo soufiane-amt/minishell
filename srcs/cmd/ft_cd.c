@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:02:55 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 17:58:31 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:10:11 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void    ft_cd(t_cmd *cmd)
 	if (ft_lstsize(cmd->options) > 0)
     {
         perror("builtin command\n");
-        // set variable error = 1 here
         return ;
     }
 	while (e)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:04 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 19:59:53 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/15 12:22:53 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@ void	ft_token_add_back(t_token **token, t_token *new)
 		*token = new;
 }
 
-void	ft_env_tadd_back(t_env **lst, t_env *new)
+
+void    ft_env_tadd_back(t_env **lst, t_env *new)
 {
-	if (!new)
-		return ;
-	if (!(*lst))
-		*lst = new;
-	else
-		ft_env_last((*lst))->next = new;
+    if (!new)
+        return ;
+    if (!(*lst))
+        *lst = new;
+    else
+        ft_env_last((*lst))->next = new;
 }
