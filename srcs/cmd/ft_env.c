@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 22:08:51 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/14 19:55:14 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/15 19:57:51 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void    ft_env(t_cmd *cmd ,int is)
     {
         if (is == 1)
             printf("%s=%s\n", e->variable, e->value);
-        if (is ==0)
+        if (is == 0)
             printf("declare -x %s=%s\n", e->variable, e->value);
         e = e->next;
     }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils_env_exp.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:01:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/15 12:44:52 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:08:40 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,15 @@ void get_env_while_prompt( char c, char **env)
         var = malloc(size_var_val(data.env[i], 1, c) + 1);
         val = malloc(size_var_val(data.env[i], 0, c) + 1);
         if (var && val)
+        {
             cpy_var_val(data.env[i], var, val, '=');
+            if(i == 0)
+                data.enver = ft_env_new(var, val);
+            else
+                ft_env_tadd_back(&(data.enver), ft_env_new(var, val));
+        }
         else
             return ;
-        if(i == 0)
-           data.enver = ft_env_new(var, val);
-        else
-            ft_env_tadd_back(&(data.enver), ft_env_new(var, val));
         i++;
     }
     free(var);

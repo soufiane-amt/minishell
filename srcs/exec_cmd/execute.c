@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:13:23 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 18:16:46 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/15 19:57:32 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void    exec_cmd (t_cmd *cmd)
             exec_built_cmd(cmd);
         *(data.status.exit_code) = 1;
         exit(1);
+    }
+    else
+    {
+        exec_built_cmd(cmd);
     }
     close_fd(cmd, 0);
 }

@@ -6,25 +6,13 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 19:51:37 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/15 19:16:29 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "minishell.h"
 
-// void show()
-// {
-//     t_env *e;
-
-//     e = data.enver;
-//     while (e)
-//     {
-//         if(e->value)
-//             printf("%s = %s\n",data.enver->variable, data.enver->value);
-//         e = e->next;
-//     }
-// }
 int open_prompt(char  **env)
 {
     t_token  **token;
@@ -32,7 +20,6 @@ int open_prompt(char  **env)
     signal(SIGINT,ctl_c);
     signal(SIGQUIT, ctl_c);
     get_env_while_prompt('=', env);
-    // show();
     while (1)
     {
         data.input = readline("𝖒𝖎𝖓𝖎𝖘𝖍𝖊𝖑𝖑➜");
