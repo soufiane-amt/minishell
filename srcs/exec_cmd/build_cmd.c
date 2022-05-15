@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:41:21 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/24 23:50:33 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/15 21:40:47 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void build_cmd (t_cmd *cmd)
     char    *f_str;
     t_list  *temp;
 
-    cmd->cmd_str = ft_strdup("");
+    cmd->cmd_str = ft_strjoin(cmd->cmd, " ");
     if (!cmd->cmd_str)
     {
         chstatus(MEMORY_LACK, NULL, 30);
         return ;
     }
-    temp = cmd->ex_elements;
+    temp = cmd->ex_elements->next;
     while (temp)
     {
         if (!ft_is_redi((((char *)temp ->content)[0]))  &&

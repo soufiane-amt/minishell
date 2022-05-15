@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:27 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/12 23:00:28 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/15 23:09:06 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_env	*ft_env_new(char *var, char *val)
 		return (NULL);
 	first_list->variable = var;
 	first_list->value = val;
+    // printf("%s %s\n", first_list->variable, first_list->value);
 	first_list->next = NULL;
 	return (first_list);
 }

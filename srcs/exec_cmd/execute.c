@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:13:23 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/15 19:57:32 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/15 23:19:58 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ void    exec_cmd (t_cmd *cmd)
     int         id;
     int         cmd_type;
 
+    cmd_type = is_built_cmd(cmd);
     id = fork();
     if (id < 0)
         return ;
-    cmd_type = is_built_cmd(cmd);
     //mind the exit!!!!!!!!!
-    if (id == 0 && cmd_type < 6)
+    if (id == 0 && cmd_type < 5)
     {
         *(data.status.exit_code) = 0;
         if (cmd->input.fd != STDIN_FILENO)
@@ -56,13 +56,13 @@ void    exec_cmd (t_cmd *cmd)
         if (!cmd_type) 
             execve (cmd->f_cmd[0], cmd->f_cmd, data.env);
         else
-            exec_built_cmd(cmd);
+            exec_built_cmd(cmd, cmd_type);
         *(data.status.exit_code) = 1;
         exit(1);
     }
-    else
-    {
-        exec_built_cmd(cmd);
-    }
+    if (!id)
+        exit(1);
+    if (cmd_type >= 5 )
+        exec_built_cmd(cmd, cmd_type);
     close_fd(cmd, 0);
 }

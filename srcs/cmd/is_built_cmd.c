@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:38:28 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 18:50:59 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/15 23:21:04 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 int	is_built_cmd(t_cmd *cmd)
 {
-    if(!ft_strcmp(cmd->cmd, _char("unset")) || !ft_strcmp(cmd->cmd, _char("UNSET")))
+	if(!ft_strcmp(cmd->cmd, "echo") || !ft_strcmp(cmd->cmd, "ECHO"))
 		return (1);
-	else if(!ft_strcmp(cmd->cmd, _char("echo")) || !ft_strcmp(cmd->cmd, _char("ECHO")))
+	else if(!ft_strcmp(cmd->cmd, "env") || !ft_strcmp(cmd->cmd, "ENV"))
 		return (2);
-	else if(!ft_strcmp(cmd->cmd, _char("env")) || !ft_strcmp(cmd->cmd, _char("ENV")))
+	else if(!ft_strcmp(cmd->cmd, "pwd") || !ft_strcmp(cmd->cmd, "PWD"))
 		return (3);
-	else if(!ft_strcmp(cmd->cmd, _char("export")) || !ft_strcmp(cmd->cmd, _char("EXPORT")))
+    else if(!ft_strcmp(cmd->cmd, "unset") || !ft_strcmp(cmd->cmd, "UNSET"))
 		return (4);
-	else if(!ft_strcmp(cmd->cmd, _char("pwd")) || !ft_strcmp(cmd->cmd, _char("PWD")))
+	else if(!ft_strcmp(cmd->cmd, "export") || !ft_strcmp(cmd->cmd, "EXPORT"))
 		return (5);
-    else if(!ft_strcmp(cmd->cmd, _char("cd")) || !ft_strcmp(cmd->cmd, _char("CD")))
+    else if(!ft_strcmp(cmd->cmd, "cd") || !ft_strcmp(cmd->cmd, "CD"))
 		return (6);
-	else if(!ft_strcmp(cmd->cmd, _char("exit")) || !ft_strcmp(cmd->cmd, _char("EXIT")))
+	else if(!ft_strcmp(cmd->cmd, "exit") || !ft_strcmp(cmd->cmd, "EXIT"))
 		return (7);
 	return (0);
 }

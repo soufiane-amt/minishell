@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:02:55 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/15 13:10:11 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:43:49 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,6 @@ void    ft_cd(t_cmd *cmd)
 
 	e = data.enver;
 	arg = cmd->args;
-	if (ft_lstsize(cmd->options) > 0)
-    {
-        perror("builtin command\n");
-        return ;
-    }
 	while (e)
 	{
 		if (!ft_strcmp(e->variable, "PWD"))
@@ -55,9 +50,9 @@ void    ft_cd(t_cmd *cmd)
 		}
 		e = e->next;
 	}
-	if (!arg->content)
-		chdir("/Users/eelmoham");
-	else if (((char *)arg->content)[0] == '~')
+	if (!arg)
+		chdir("/Users/samajat");
+	else if (((char *)arg->content)[0] == '~' || !arg->content)
 	{
 		path = ft_strjoin(getenv("HOME"), st(arg->content));
 		if (chdir(path))

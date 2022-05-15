@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 19:07:02 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/14 19:00:07 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/15 21:00:31 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //Use a global variable to resolve the heredoc case
 void     get_cmd(t_cmd *cmd)
 {
-    cmd->cmd = ft_strdup((char *)cmd->ex_elements->content);
+    cmd->cmd = ft_strdup(_char((char *)cmd->ex_elements->content));
     if (!cmd->cmd)
         chstatus(MEMORY_LACK, NULL, 30);
     //command : should be freed

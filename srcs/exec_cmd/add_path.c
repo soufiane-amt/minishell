@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:23:50 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/24 22:44:08 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/15 21:44:17 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ int    add_path(t_cmd *cmd)
     int     i;
     char    *command;
 
+    if (ft_is_redirection (cmd->cmd))
+        return (0);
+    if (is_built_cmd(cmd))
+        return (0);
     i = 0;
     if (!cmd->f_cmd)
         return (0);
