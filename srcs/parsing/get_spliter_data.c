@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 14:50:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/25 01:48:06 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 23:50:04 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,30 @@ int get_spliter_data(t_spliter *spliter, char  *prev_cmd, char *next_cmd)
 //who | awk '{print $1}' | sort | uniq -c | sort -n
 //define the file descriptor of output and input based on pipe and it is last data to assign
 
+t_spliter   *get_spliter (t_spliter *spliter)
+{
+    char    **cmd;
+
+    data.l = data.i + 1;
+    spliter->spec_char = data.input[data.i];
+    while (data.input[data.l] && data.input[data.l] != '\n' && data.input[data.l] != spliter->spec_char)
+        data.l++;
+    cmd = get_two_separated_cmd(ft_substr(data.input, data.j, data.l + 1), spliter->spec_char);
+    if (!cmd || *data.status.exit_code || !get_spliter_data(spliter, cmd[0], cmd[1]))
+    {
+        free_arr((void **)cmd);
+        data.spliter_sucess = 0;
+        return (spliter);
+    }
+    free_arr((void **)cmd);
+    (data.i)++;
+    data.j = data.i;
+    return (spliter);
+}
+
 t_spliter *ft_split_by_sep()
 {
     t_spliter   *spliter;
-    char        **cmd;
 
     spliter = malloc (sizeof(t_spliter));
     if (!spliter)
@@ -89,23 +109,7 @@ t_spliter *ft_split_by_sep()
     while (data.input[data.i])
     {
         if (ft_is_sep(spliter, data.input[data.i]))
-        {
-            data.l = data.i + 1;
-            spliter->spec_char = data.input[data.i];
-            while (data.input[data.l] && data.input[data.l] != '\n' && data.input[data.l] != spliter->spec_char)
-                data.l++;
-            cmd = get_two_separated_cmd(ft_substr(data.input, data.j, data.l + 1), spliter->spec_char);
-            if (!cmd || *data.status.exit_code || !get_spliter_data(spliter, cmd[0], cmd[1]))
-            {
-                free_arr((void **)cmd);
-                data.spliter_sucess = 0;
-                return (spliter);
-            }
-            free_arr((void **)cmd);
-            (data.i)++;
-            data.j = data.i;
-            return (spliter);
-        }
+            return (get_spliter(spliter));
         (data.i)++;
     }
     free(spliter);
