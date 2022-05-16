@@ -6,25 +6,25 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 21:53:22 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/25 01:56:34 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 22:00:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void    ft_open_heredoc (t_cmd *cmd, char   *delimter)
+void    ft_open_prompt (int fd, t_cmd *cmd, char *delimiter)
 {
 	char	*str;
 	char	*f_str;
-    int fd;
 
-    fd = open(".temp", O_CREAT | O_RDWR | O_TRUNC , 0777);
-    //mind the exit
     str = ft_strdup("");
     f_str = ft_strdup("");
     if (!str || !f_str)
+    {
+        chstatus (MEMORY_LACK, NULL, 30);
         return ;
-	while (str && ft_strcmp(str, delimter))
+    }
+	while (str && ft_strcmp(str, delimiter))
 	{
 		ft_putstr_fd("heredoc>", 1);
 		ft_putstr_fd(f_str, fd);
@@ -38,7 +38,18 @@ void    ft_open_heredoc (t_cmd *cmd, char   *delimter)
         close (cmd->input.fd);
 	free(str);
 	free(f_str);
-    str = NULL;
-    f_str = NULL;
+}
+
+void    ft_open_heredoc (t_cmd *cmd, char   *delimiter)
+{
+    int     fd;
+
+    fd = open(".temp", O_CREAT | O_RDWR | O_TRUNC , 0777);
+    if (fd < 0)
+    {
+        chstatus(FD_ERROR, NULL, 55);
+        return ;
+    }
+    ft_open_prompt(fd, cmd, delimiter);
     cmd->input.fd = open(".temp",  O_RDWR , 0777);
 }

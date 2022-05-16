@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 20:39:29 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 22:01:55 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@
 #define PERMISSION_DENIED "minishell: permission denied: "
 
 #define SYNTAX_ERROR "minishell: syntax error near unexpected token  "
+
+#define FD_ERROR "failed to open file."
+
 //file not found error
 //Global variable
 

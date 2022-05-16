@@ -35,6 +35,7 @@ dlfkf
 
 𝖒𝖎𝖓𝖎𝖘𝖍𝖊𝖑𝖑➜cat
 𝖒𝖎𝖓𝖎𝖘𝖍𝖊𝖑𝖑➜𝖒𝖎𝖓𝖎𝖘𝖍𝖊𝖑𝖑➜
+handle the lst_new type
 //test syntax pipe
 // ()
 // test wrong CMD_NOT_F

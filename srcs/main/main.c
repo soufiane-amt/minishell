@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:49 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/15 19:18:42 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 22:02:39 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,8 @@
 // }
 int main (int argc, char **argv, char **env)
 {
-    // t_token **token;
-
-    // token = init_token();
     (void)argc;
     (void)argv;
     
-    // puts("****\n");
-    // show(env);
-    // puts("****\n");
     open_prompt(env);
 }
