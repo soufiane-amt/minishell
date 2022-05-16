@@ -6,11 +6,22 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 00:29:21 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/25 00:02:00 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 21:50:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+//the system has a lack of  memory, please free up some space and try again!
+void    ch_to_error_message_only(char   *exit_message)
+{
+    data.status.status = ft_strjoin(exit_message, "\n");
+    if (!data.status.status)
+    {
+        *data.status.exit_code = 30;
+        return ;
+    }
+}
 
 //the system has a lack of  memory, please free up some space and try again!
 void chstatus (char *exit_message, char *cmd, int   exit_code)
@@ -38,11 +49,6 @@ void chstatus (char *exit_message, char *cmd, int   exit_code)
             free(to_free);
             return ;
         }
-        data.status.status = ft_strjoin(exit_message, "\n");
-        if (!data.status.status)
-        {
-            *data.status.exit_code = 30;
-            return ;
-        }
+        ch_to_error_message_only(exit_message);
     }
 }

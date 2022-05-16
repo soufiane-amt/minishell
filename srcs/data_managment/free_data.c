@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:56:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/25 01:47:16 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 21:20:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 //echo hello >text | echo hello | ls -al | wc -l
 void    free_t_data()
 {
-    //should I free env?
     unlink (".temp");
     if (data.input)
         free(data.input);
@@ -38,8 +37,6 @@ void    free_cmd (t_cmd *cmd)
         free(cmd->cmd);
         cmd->cmd = NULL;
     }
-    // if (ft_lstsize(cmd->options))
-    //     ft_lstclear(&cmd->options, 1);
     if (ft_lstsize(cmd->args))
         ft_lstclear(&cmd->args, 1);
     if (ft_lstsize(cmd->in_redirect_f))
@@ -82,8 +79,6 @@ void    free_tokens (t_token **token)
 
     if (*data.status.exit_code)
         return ;
-    // if (data.token_freed == TRUE)
-    //     return ;
     last_element = 0;
 	temp = *token;
 	while (temp )

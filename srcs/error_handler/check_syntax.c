@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 15:11:23 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 20:49:06 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 21:38:56 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,13 @@ int     check_prenthesis (char    *str)
 
     if (*data.status.exit_code)
         return (0);
-    i = 0;
+    i = -1;
     a = 0;
     b = 0;
     j = ft_strlen (str) - 1;
-    while (ft_ispace(str[i]))
-        i++;
-    while (str[i] == '(')
-    {
-        i++;
+    while (ft_ispace(str[++i]));
+    while (str[++i] == '(')
         a++;
-    }
     while (ft_ispace(str[j]))
         j--;
     while (str[j] == ')')
@@ -50,13 +46,11 @@ char     *if_prenthesized (char *str, char  **t_str)
     int     i;
     int     j;
 
-    i = 0;
+    i = -1;
     j = ft_strlen (str) - 1;
-    while (str && ft_ispace(str[i]))
-        i++;
-    if (str[i] == '(')
+    while (str && ft_ispace(str[++i]));
+    if (str[i++] == '(')
     {
-        i++;
         while (str && str[j] && ft_ispace(str[j]))
             j--;
         if ((str)[j] == ')')
@@ -76,7 +70,6 @@ char     *if_prenthesized (char *str, char  **t_str)
     return (str);
 }
 
-
 int     check_redirection_validity(char *cmd)
 {
     return (input_redirection_is_valid(cmd) != 0 && output_redirection_is_valid(cmd));
@@ -89,7 +82,6 @@ int     redirections_are_valid(t_cmd *cmd, char *command)
     char    *next_element;
 
     ft_extract_data(cmd, command);
-    ft_replace_with_acctual_values(cmd);
     if (*data.status.exit_code)
         return (0);
     temp = cmd->ex_elements;
@@ -120,3 +112,34 @@ int     check_syntax (t_cmd *cmd, char    *command)
         return (1);
     return (0);
 }
+
+
+// int     redirections_are_valid(t_cmd *cmd, char *command)
+// {
+//     t_list  *temp;
+//     char    *element;
+//     char    *next_element;
+
+//     ft_extract_data(cmd, command);
+//     ft_replace_with_acctual_values(cmd);
+//     if (*data.status.exit_code)
+//         return (0);
+//     temp = cmd->ex_elements;
+//     while (temp && temp->next)
+//     {
+//         element = temp->content;
+//         next_element = temp->next->content;
+//         if(ft_is_redi(element[0]) && (ft_strlen(element) > 2 || ft_is_redi(next_element[0])))
+//         {
+//             chstatus (SYNTAX_ERROR, element, 258);
+//             return (0);
+//         }
+//         temp = temp->next;
+//     }
+//     if (ft_is_redi(((char *)temp->content)[0]))
+//     {
+//         chstatus (SYNTAX_ERROR, "'newline'", 258);
+//         return (0);
+//     }
+//     return (1);
+// }

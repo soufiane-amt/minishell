@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:41:21 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/15 21:40:47 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 21:51:31 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,36 +26,42 @@ void    add_space (char **cmd)
     free (f_str);
 }
 
-void build_cmd (t_cmd *cmd)
+void    add_comp(t_cmd  *cmd, t_list    *temp)
 {
     char    *f_str;
-    t_list  *temp;
 
-    cmd->cmd_str = ft_strjoin(cmd->cmd, " ");
+    if (!ft_is_redi((((char *)temp ->content)[0]))  &&
+        !ft_lst_contain (&cmd->in_redirect_f, (char *)temp ->content) &&
+        !ft_lst_contain (&cmd->out_redirect_f, (char *)temp ->content))
+    {
+    f_str = cmd->cmd_str;
+    cmd->cmd_str = ft_strjoin (cmd->cmd_str, (char *)temp ->content);
     if (!cmd->cmd_str)
     {
         chstatus(MEMORY_LACK, NULL, 30);
         return ;
     }
-    temp = cmd->ex_elements->next;
+    add_space(&cmd->cmd_str);
+    if (*data.status.exit_code)
+        return;
+    free(f_str);
+    }
+}
+
+void build_cmd (t_cmd *cmd)
+{
+    t_list  *temp;
+
+    cmd->cmd_str = ft_strdup("");
+    if (!cmd->cmd_str)
+    {
+        chstatus(MEMORY_LACK, NULL, 30);
+        return ;
+    }
+    temp = cmd->ex_elements;
     while (temp)
     {
-        if (!ft_is_redi((((char *)temp ->content)[0]))  &&
-                !ft_lst_contain (&cmd->in_redirect_f, (char *)temp ->content) &&
-                !ft_lst_contain (&cmd->out_redirect_f, (char *)temp ->content))
-            {
-                f_str = cmd->cmd_str;
-                cmd->cmd_str = ft_strjoin (cmd->cmd_str, (char *)temp ->content);
-                if (!cmd->cmd_str)
-                    {
-                        chstatus(MEMORY_LACK, NULL, 30);
-                        return ;
-                    }
-                add_space(&cmd->cmd_str);
-                if (*data.status.exit_code)
-                    return;
-                free(f_str);
-            }
+        add_comp(cmd, temp);
         temp = temp ->next;
     }
 }
