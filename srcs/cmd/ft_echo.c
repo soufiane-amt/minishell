@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:20:39 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 17:16:07 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:34:07 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void ft_echo(t_cmd *cmd)
 
 	is_nl = 0;
     arg = cmd->args;
-	if (!ft_strcmp(arg->content, "-n"))
+	if (arg && !ft_strcmp(arg->content, "-n"))
 	{
 		is_nl = 1;
 		arg = arg->next;
@@ -30,6 +30,6 @@ void ft_echo(t_cmd *cmd)
         arg = arg->next;
     }
 	if (is_nl == 0)
-		printf("\n");
+        printf ("\n");
 	//error = 1
 }

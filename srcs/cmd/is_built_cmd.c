@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_built_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:38:28 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 17:14:34 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:35:53 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ static void lowerchar(char *str)
 int	is_built_cmd(t_cmd *cmd)
 {
 	lowerchar(cmd->cmd);
-	if(!ft_strcmp(_char(cmd->cmd), "echo"))
+	if(!ft_strcmp(cmd->cmd, "echo"))
 		return (1);
-	else if(!ft_strcmp(_char(cmd->cmd), "env"))
-		return (2);
 	else if(!ft_strcmp(_char(cmd->cmd), "pwd"))
-		return (3);
+		return (2);
     else if(!ft_strcmp(_char(cmd->cmd), "unset"))
+		return (3);
+	else if(!ft_strcmp(_char(cmd->cmd), "env"))
 		return (4);
 	else if(!ft_strcmp(_char(cmd->cmd), "export"))
 		return (5);
