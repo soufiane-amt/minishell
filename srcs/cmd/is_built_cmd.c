@@ -3,30 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   is_built_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:38:28 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/15 23:21:04 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 17:14:34 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+static int	ft_tolower(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
+}
+
+static void lowerchar(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		str[i] = ft_tolower(str[i]);
+		i++;
+	}
+}
+
 int	is_built_cmd(t_cmd *cmd)
 {
-	if(!ft_strcmp(cmd->cmd, "echo") || !ft_strcmp(cmd->cmd, "ECHO"))
+	lowerchar(cmd->cmd);
+	if(!ft_strcmp(_char(cmd->cmd), "echo"))
 		return (1);
-	else if(!ft_strcmp(cmd->cmd, "env") || !ft_strcmp(cmd->cmd, "ENV"))
+	else if(!ft_strcmp(_char(cmd->cmd), "env"))
 		return (2);
-	else if(!ft_strcmp(cmd->cmd, "pwd") || !ft_strcmp(cmd->cmd, "PWD"))
+	else if(!ft_strcmp(_char(cmd->cmd), "pwd"))
 		return (3);
-    else if(!ft_strcmp(cmd->cmd, "unset") || !ft_strcmp(cmd->cmd, "UNSET"))
+    else if(!ft_strcmp(_char(cmd->cmd), "unset"))
 		return (4);
-	else if(!ft_strcmp(cmd->cmd, "export") || !ft_strcmp(cmd->cmd, "EXPORT"))
+	else if(!ft_strcmp(_char(cmd->cmd), "export"))
 		return (5);
-    else if(!ft_strcmp(cmd->cmd, "cd") || !ft_strcmp(cmd->cmd, "CD"))
+    else if(!ft_strcmp(_char(cmd->cmd), "cd"))
 		return (6);
-	else if(!ft_strcmp(cmd->cmd, "exit") || !ft_strcmp(cmd->cmd, "EXIT"))
+	else if(!ft_strcmp(_char(cmd->cmd), "exit"))
 		return (7);
 	return (0);
 }
