@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/15 21:21:26 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 13:07:55 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ void    ft_collect_data();
 //builtin funcs
 void    ft_cd(t_cmd *cmd);
 void    ft_echo(t_cmd *cmd);
-void    ft_env(t_cmd *cmd ,int is);
+void    ft_env(int is);
 void    ft_exit(t_cmd *cmd);
 void    ft_export(t_cmd *cmd);
 char    *ft_pwd();

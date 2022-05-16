@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_built.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:58:46 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/15 23:18:51 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 13:06:51 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	exec_built_cmd(t_cmd *cmd, int result)
 	if (result == 1)
 		ft_echo(cmd);
 	if (result == 2)
-		ft_env(cmd, 1);
+		ft_env(1);
 	if (result == 3)
 		printf("%s\n",ft_pwd());
 	if (result == 4)

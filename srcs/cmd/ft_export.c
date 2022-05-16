@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:03:40 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 14:58:13 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/16 13:07:05 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,14 @@ int is_exist(char *var, char *val)
 
 void func(char *var , char *val)
 {
-    if (is_exist(var, val) == 0
-        && ((var[0] >= 'a' || var[0] >= 'z')
-        && (var[0] >= 'A' || var[0] <= 'Z')))
+    if (is_exist(var, val) == 0)
         ft_env_tadd_back(&(data.enver), ft_env_new(var, val));
     else
         printf("export: `%s': not a valid identifier",var);
     free(var);
-    free(val); // ?? realy , I need free() here?????
+    free(val);
 }
+
 void    ft_export(t_cmd *cmd)
 {
     char *var;
@@ -46,21 +45,19 @@ void    ft_export(t_cmd *cmd)
     t_list *l;
 
     l = cmd->args;
-    if (ft_lstsize(l) == 0)
-        ft_env(cmd, 0);
-    if (ft_lstsize(cmd->options) > 0)
-    {
-        perror("builtin command\n");
-        // set variable error = 1 here
-        return ;
-    }
+    if (ft_lstsize(cmd->args) == 0)
+        ft_env(0);
     while (l)
     {
         var = malloc(size_var_val(l->content, 1, '=') + 1);
         val = malloc(size_var_val(l->content, 0, '=') + 1);
-        cpy_var_val(l->content, var, val, '=');
-        func(var ,val);
+        if (var && val)
+        {
+            cpy_var_val(l->content, var, val, '=');
+            func(var ,val);
+        }
+        else
+            puts("error");
         l = l->next;
     }
-    // set variable error = 0 here
 }

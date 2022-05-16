@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:04 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/15 12:22:53 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/16 12:45:40 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,6 @@ void    ft_env_tadd_back(t_env **lst, t_env *new)
         *lst = new;
     else
         ft_env_last((*lst))->next = new;
+	
+	printf("%s %s\n", ft_env_last((*lst))->variable, ft_env_last((*lst))->value);
 }

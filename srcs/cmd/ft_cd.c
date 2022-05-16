@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:02:55 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/15 20:43:49 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 12:59:55 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ void    ft_cd(t_cmd *cmd)
 		e = e->next;
 	}
 	if (!arg)
-		chdir("/Users/samajat");
+		chdir(get_env("HOME"));
 	else if (((char *)arg->content)[0] == '~' || !arg->content)
 	{
-		path = ft_strjoin(getenv("HOME"), st(arg->content));
+		path = ft_strjoin(getenv("HOME"), st(_char(arg->content)));
 		if (chdir(path))
 			printf("bash: cd: %s: %s\n", path, strerror(2));
 		free (path);
 	}
-	else if (chdir(arg->content))
+	else if (chdir(_char(arg->content)))
 		printf("bash: cd: %s: %s\n", arg->content, strerror(2));
 }
