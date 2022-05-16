@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 22:01:55 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 22:25:08 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ void	ft_lstprint(t_list *lst);
 int		ft_lst_contain(t_list **lst, char *str);
 void	ft_lstclear(t_list **lst, int   free_content);
 void	ft_lstdelone(t_list **lst, int   free_content);
+
 // lst env
 t_env	*ft_env_last(t_env *lst);
 void	ft_env_tadd_back(t_env **lst, t_env *new);
@@ -254,6 +255,9 @@ int    add_path(t_cmd *cmd);
 void    ft_extract_data(t_cmd *cmd, char    *command);
 void    ft_open_heredoc (t_cmd *cmd, char   *delimter);
 void    ft_replace_with_acctual_values(t_cmd *cmd);
+void    get_cmd_out_redirct(t_cmd *cmd, t_list *temp);
+void    get_cmd_in_redirct(t_cmd *cmd, t_list *temp);
+void    get_cmd_redirect (t_cmd *cmd, t_list *temp);
 
 //free
 void    free_tokens (t_token **token);

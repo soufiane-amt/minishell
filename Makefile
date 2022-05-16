@@ -19,7 +19,7 @@ M_SRC =  ft_prompt main
 
 CTL_SRC = ctl_c
 
-P_SRC = get_token get_cmd_data get_spliter_data redirection_handler ft_extractor ft_replace_values
+P_SRC = get_token get_cmd_data get_spliter_data redirection_handler ft_extractor ft_replace_values redirection\
 		
 
 U_SRC = ft_strcmp ft_strlen ft_split ft_strdup ft_substr  ft_strchr ft_utils_env_exp ft_strcpy ft_strjoin \

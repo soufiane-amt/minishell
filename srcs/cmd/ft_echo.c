@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:20:39 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 18:34:07 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 22:29:49 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void ft_echo(t_cmd *cmd)
 	}
     while(arg)
     {	
-		printf("%s ",_char(arg->content));
+		printf("%s ",arg->content);
         arg = arg->next;
     }
 	if (is_nl == 0)
