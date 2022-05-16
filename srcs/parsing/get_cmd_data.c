@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 19:07:02 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/15 21:00:31 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 20:49:41 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,6 @@ void     get_cmd(t_cmd *cmd)
 //1)You should take care later of the command looking like this : "ls" consider strtrim
 
 
-void     get_cmd_opt(t_cmd *cmd)
-{
-    t_list  *temp;
-
-    temp = cmd->ex_elements->next;
-    while (temp)
-    {
-        if (((char *)temp->content)[0] == '-')
-            ft_lstadd_back(&cmd->options, ft_lstnew((char *)temp->content, CHAR));
-        temp = temp ->next;
-    }
-}
 
 //Same rule on comment (1) applies on options 
 //overwrite white spaces
@@ -85,7 +73,7 @@ void     get_cmd_args(t_cmd *cmd)
     {
         if(!ft_is_redi((((char *)temp ->content)[0])))
         {
-            arg = ft_strdup((char *)temp->content);
+            arg = ft_strdup(_char((char *)temp->content));
             if (!arg)
             {
                 chstatus(MEMORY_LACK, NULL, 30);

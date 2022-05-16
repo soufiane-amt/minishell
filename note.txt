@@ -23,3 +23,9 @@ in herdoc you should change all the user input into its real values
 //
 check if input data is surrounded by valid printhesis 
 what if you cd to an other directory but you lose temp file path
+
+
+//test syntax pipe
+// ()
+// test wrong CMD_NOT_F
+// multipipes

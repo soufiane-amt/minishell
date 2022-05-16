@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:03:57 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/14 15:00:00 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:29:50 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,12 @@ void    ft_unset(t_cmd *cmd)
     char *var;
 
     arg = cmd->args;
-    if (ft_lstsize(cmd->options) > 0)
-    {
-        perror("builtin command\n");
-        // set variable error = 1 here
-        return ;
-    }
+    if (!arg)
+        return;
     while (arg)
     {
         e = data.enver;
-        while (e != NULL)
+        while (e)
         {
             var = e->variable;
             if (!ft_strcmp(var, arg->content))
@@ -38,7 +34,12 @@ void    ft_unset(t_cmd *cmd)
                 printf("unset: `%s': not a valid identifier",var);
             e = e->next;
         }
-        e->value = "";
+        if (e)
+        {
+            //Free below 
+            e->value = "";
+            e->variable = "";
+        }
         arg = arg->next;
     }
     // set variable error = 0 here

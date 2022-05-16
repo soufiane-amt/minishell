@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 13:07:55 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:39:29 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,6 +250,7 @@ void    exec_cmd_ln(t_token **token);
 int    add_path(t_cmd *cmd);
 void    ft_extract_data(t_cmd *cmd, char    *command);
 void    ft_open_heredoc (t_cmd *cmd, char   *delimter);
+void    ft_replace_with_acctual_values(t_cmd *cmd);
 
 //free
 void    free_tokens (t_token **token);

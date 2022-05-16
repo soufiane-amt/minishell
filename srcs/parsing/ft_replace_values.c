@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_replace_values.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 23:01:41 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 19:33:35 by samajat          ###   ########.fr       */
+/*   Created: 2022/05/16 20:34:51 by samajat           #+#    #+#             */
+/*   Updated: 2022/05/16 20:39:10 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "minishell.h"
 
-int ft_strlen(const char *str)
+void    ft_replace_with_acctual_values(t_cmd *cmd)
 {
-    int i;
+    t_list  *temp;
+    void    *to_free;
 
-    i = 0;
-    if (!str && !str[0])
-        return (0);
-    while (str[i])
-        i++;
-    return (i);    
+    temp = cmd->ex_elements;
+    while (temp)
+    {
+        to_free = temp->content;
+        temp->content = _char(temp->content);
+        free(to_free);
+        temp = temp->next;
+    }
 }

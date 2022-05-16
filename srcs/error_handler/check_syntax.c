@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 15:11:23 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/25 01:31:34 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 20:49:06 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int     redirections_are_valid(t_cmd *cmd, char *command)
     char    *next_element;
 
     ft_extract_data(cmd, command);
+    ft_replace_with_acctual_values(cmd);
     if (*data.status.exit_code)
         return (0);
     temp = cmd->ex_elements;

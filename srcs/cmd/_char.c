@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/14 19:32:44 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 20:16:55 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ char *_char(char *str)
 	{
 		if (new_str[i] != -5 && new_str[i] != -6)
 			_last = ft_charjoin(_last, new_str[i]);
+        //free here
 		i++;
 	}
 	_last[i] = '\0';

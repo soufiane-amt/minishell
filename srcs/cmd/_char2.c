@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _char2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:25:21 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/14 17:51:43 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:14:53 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int  cpy_var(char *str, char *var, char c)
 		j++;
 	}
 	var[j] = '\0';
-	return (strlen(var));
+	return (ft_strlen(var));
 }
 
 static char	*ft_one_char_str(char c)
@@ -76,7 +76,7 @@ char	*ft_charjoin(char *s1, char c)
 	if (!s1)
 		return (ft_one_char_str(c));
 	i = 0;
-	output = (char *) malloc((strlen(s1) + 2) * sizeof(char));
+	output = (char *) malloc((ft_strlen(s1) + 2) * sizeof(char));
 	if (!output)
 		return (NULL);
 	while (s1[i])
