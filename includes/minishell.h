@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 22:25:08 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 23:40:07 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,7 +251,7 @@ void    open_redir_files(t_cmd *cmd);
 void    build_cmd (t_cmd *cmd);
 void    exec_cmd (t_cmd *cmd);
 void    exec_cmd_ln(t_token **token);
-int    add_path(t_cmd *cmd);
+int    add_path(t_cmd *cmd, char   *t_command);
 void    ft_extract_data(t_cmd *cmd, char    *command);
 void    ft_open_heredoc (t_cmd *cmd, char   *delimter);
 void    ft_replace_with_acctual_values(t_cmd *cmd);

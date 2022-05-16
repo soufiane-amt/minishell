@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:23:50 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 21:49:33 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 23:40:03 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ int     test_paths(t_cmd *cmd)
     return (1);
 }
 
-int     add_path(t_cmd *cmd)
+int    add_path(t_cmd *cmd, char   *t_command)
 {
+    if (t_command)
+        free(t_command);
     if (ft_is_redirection (cmd->cmd) || is_built_cmd(cmd) || !cmd->f_cmd)
         return (0);
     if (!access(cmd->f_cmd[0], F_OK))

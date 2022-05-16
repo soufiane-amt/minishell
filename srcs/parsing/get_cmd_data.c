@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 19:07:02 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/16 22:33:10 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/16 23:41:38 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,21 @@ void     get_cmd_args(t_cmd *cmd)
     }
 }
 
-
+int    get_f_cmd(t_cmd *cmd, char *t_command)
+{
+    if (ft_strcmp("", cmd->cmd_str))
+    {
+        cmd ->f_cmd = ft_split (cmd->cmd_str, ' ');
+        if (!cmd ->f_cmd)
+        {
+            chstatus(MEMORY_LACK, NULL, 30);
+            if (t_command)
+                free(t_command);
+            return (0); 
+        }
+    }
+    return (1);
+}
 //echo hello> output>>outfile>result | cat <note.txt>out >>output
 //Same rule on comment (1) applies on args 
 //2)Protection is required , Not all the data will be available
@@ -76,11 +90,9 @@ t_cmd     *get_cmd_data (char  *command)
     if (!cmd)
         return(cmd);
     command = if_prenthesized(command, &t_command);
-    check_prenthesis(command);
-    check_syntax(cmd, command);
-    if (*data.status.exit_code)
+    if (check_syntax(cmd, command) && *data.status.exit_code)
     {
-        if ((t_command))
+        if (t_command)
             free(t_command);
         return (cmd);
     }
@@ -88,22 +100,12 @@ t_cmd     *get_cmd_data (char  *command)
     get_cmd_redirects(cmd);
     get_cmd_args(cmd);
     build_cmd (cmd);
-    if (ft_strcmp("", cmd->cmd_str))
-    {
-        cmd ->f_cmd = ft_split (cmd->cmd_str, ' ');
-        if (!cmd ->f_cmd)
-        {
-            chstatus(MEMORY_LACK, NULL, 30);
-            if ((t_command))
-                    free(t_command);
-            return (NULL); 
-        }
-    }
-    add_path(cmd);
-    if ((t_command))
-        free(t_command);
+    if (!get_f_cmd(cmd, t_command))
+        return (NULL);
+    add_path(cmd, t_command);
     return (cmd);
 }
+
 //I will create a function later that cleans the cmd from double quotes or even other
 //stuff
 
