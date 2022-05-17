@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:56:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 21:20:42 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/17 22:05:37 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void    free_t_data()
         free(data.input);
     if (data.all_paths)
         free_arr((void **) data.all_paths);
-    if (*data.status.exit_code)
-        free (data.status.exit_code);
     if (data.status.status)
         free (data.status.status);
     if (data.fds)
@@ -77,7 +75,7 @@ void    free_tokens (t_token **token)
     int     last_element;
     t_token *to_free;
 
-    if (*data.status.exit_code)
+    if (data.status.exit_code)
         return ;
     last_element = 0;
 	temp = *token;

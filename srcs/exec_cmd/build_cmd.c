@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:41:21 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/17 18:54:10 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 22:03:22 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void    add_comp(t_cmd  *cmd, t_list    *temp)
         return ;
     }
     add_space(&cmd->cmd_str);
-    if (*data.status.exit_code)
+    if (data.status.exit_code)
         return;
     free(f_str);
     }
