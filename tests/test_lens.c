@@ -12,19 +12,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)(s + i));
 		i++;
 	}
-	if (s[i] == (char) c)
-		return ((char *)(s + i));
-	return (0);
-}
-
-int ft_strlen(const char *str)
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);    
+	return (NULL);
 }
 
 int test(char *str, int x)

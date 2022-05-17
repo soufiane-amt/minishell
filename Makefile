@@ -25,7 +25,7 @@ P_SRC = get_token get_cmd_data get_spliter_data redirection_handler ft_extractor
 U_SRC = ft_strcmp ft_strlen ft_split ft_strdup ft_substr  ft_strchr ft_utils_env_exp ft_strcpy ft_strjoin \
 		ft_contain  ft_strlcpy\
 		ft_strtrim ft_ispace extract_util ft_memcmp display_content\
-		add_str  ft_putnbr_fd ft_putstr_fd\
+		add_str  ft_putnbr_fd ft_putstr_fd ft_itoi\
                         
 E_SRC        =        build_cmd exec_cmd_ln execute add_path ft_open_herdoc\
 

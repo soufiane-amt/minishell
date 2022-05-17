@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:20:39 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/17 18:25:28 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 19:35:24 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void ft_echo(t_cmd *cmd)
 	}
     while(arg)
     {	
-		printf("|%s|",arg->content);
+		printf("%s",arg->content);
 		if (arg->next)
-			printf("-");
+			printf(" ");
         arg = arg->next;
     }
 	if (is_nl == 0)

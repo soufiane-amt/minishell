@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils_env_exp.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:01:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 18:46:43 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/17 20:55:05 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,10 @@ int size_var_val(char *str, int x, char c)
             i++;
         return (i);
     }
-    return (ft_strlen(ft_strchr(str, c)+1));
+    else if (ft_strchr(str, c) && ft_strchr(str, c) + 1)
+        return (ft_strlen(ft_strchr(str, c) + 1));
+    else
+        return (0);
 }
 
 int count_c(char *str, char c)

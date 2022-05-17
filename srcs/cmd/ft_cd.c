@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:02:55 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 12:59:55 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 21:01:28 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void    ft_cd(t_cmd *cmd)
 	{
 		path = ft_strjoin(getenv("HOME"), st(_char(arg->content)));
 		if (chdir(path))
-			printf("bash: cd: %s: %s\n", path, strerror(2));
+			printf("minishell: cd: %s: %s\n", path, strerror(2));
 		free (path);
 	}
 	else if (chdir(_char(arg->content)))
-		printf("bash: cd: %s: %s\n", arg->content, strerror(2));
+		printf("minishell: cd: %s: %s\n", arg->content, strerror(2));
 }

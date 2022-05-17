@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:03:40 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 16:33:02 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:19:01 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,9 @@ void func(char *var , char *val)
 {
     if (is_exist(var, val) == 0)
         ft_env_tadd_back(&(data.enver), ft_env_new(var, val));
-    // else
-    //     printf("export: `%s': not a valid identifier",var);
-    // free(var);
-    // free(val);
-    printf("[%s] [%s]\n", ft_env_last(data.enver)->variable, ft_env_last(data.enver)->value);
+    else
+        if (!val && var)
+            ft_env_tadd_back(&(data.enver), ft_env_new(var, ft_strdup(" ")));
 }
 
 void    ft_export(t_cmd *cmd)
@@ -61,4 +59,5 @@ void    ft_export(t_cmd *cmd)
         }
         l = l->next;
     }
+    // printf("****> %s\n", ft_env_last(data.enver)->variable);
 }

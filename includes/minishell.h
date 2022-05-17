@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/17 17:59:24 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 21:08:57 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,8 @@ int     ft_is_redi (char   c);
 int     ft_is_quote (char   c);
 int     ft_ispace (char c);
 int     ft_is_redirection(char *str);
+char	*ft_itoa(int n);
+
 
 //_char
 char    *_char(char *str);

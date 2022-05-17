@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/17 19:02:25 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 21:25:33 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,12 @@ static void	expand_quotes(char *str)
 			str[i] = -6;
 		if (str[i] == '\'' && is_first == 0)
 			str[i] = -5;
-		if (str[i] == '$' && (is_first != 0 || (is_first == 0
+		if ((str[i] == '$') && (is_first != 0 || (is_first == 0
 				&& really(str, i) != 0)))
 			str[i] = -7;
+		if ((str[i] == '?') && (is_first != 0 || (is_first == 0
+				&& really(str, i) != 0)))
+			str[i] = -8;
 		i++;
 	}
 }
@@ -45,6 +48,7 @@ static char *last(char *str)
 		{
 			var = malloc(size_var(str, '$') + 1);
 			i+= cpy_var(&str[i], var, -7);
+			// printf("* * * * > > %d\n", var[0]);
 			if (!getenv(var))
 				st = ft_strjoin(st, "");
 			else
@@ -93,7 +97,6 @@ char *_char(char *str)
 	else
 		return ("syntax error");// not good here
 	new_str = last(str);
-	printf("***> |%c|\n", new_str[i]);
 	_last = ft_strdup("");
 	while (new_str[i])
 	{
@@ -105,5 +108,7 @@ char *_char(char *str)
 		i++;
 	}
 	_last[i - j] = '\0';
+	if (!ft_strcmp(_last, " "))
+		_last = ft_strdup("");
 	return (_last);// what if its NULL
 }
