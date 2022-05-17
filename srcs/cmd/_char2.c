@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _char2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:25:21 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/17 21:24:12 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 21:41:45 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,11 @@ static char	*ft_one_char_str(char c)
 	char	*output;
 
 	output = (char *) malloc(2 * sizeof(char));
-	if (!output)
-		return (NULL);
+    if (!output)
+    {
+        chstatus(MEMORY_LACK, NULL, 30);
+        return (NULL);
+    }
 	output[0] = c;
 	output[1] = 0;
 	return (output);
@@ -79,8 +82,11 @@ char	*ft_charjoin(char *s1, char c)
 		return (ft_one_char_str(c));
 	i = 0;
 	output = (char *) malloc((ft_strlen(s1) + 2) * sizeof(char));
-	if (!output)
-		return (NULL);
+    if (!output)
+    {
+        chstatus(MEMORY_LACK, NULL, 30);
+        return (NULL);
+    }
 	while (s1[i])
 	{
 		output[i] = s1[i];

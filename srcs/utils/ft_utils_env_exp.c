@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils_env_exp.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:01:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/17 20:55:05 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 21:48:38 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,11 @@ char *env_var(char *str)
     
     i = count_c(str, '$') + count_c(str, '"');
     s = malloc((ft_strlen(str) - i) + 1);
+    if (!s)
+    {
+        chstatus(MEMORY_LACK, NULL, 30);
+        return ;
+    }
     i = 0;
     int j = 0;
     if (str[0] == '"' || str[0] == '$' || (str[0] == '"' && str[1] == '$'))
