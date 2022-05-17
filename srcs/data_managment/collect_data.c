@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collect_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:18:24 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 21:18:26 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/17 22:03:22 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ void    ft_collect_data(char  **env)
         i++;
     }
     generate_paths();
-    if (*data.status.exit_code)
+    if (data.status.exit_code)
         return ;
 }

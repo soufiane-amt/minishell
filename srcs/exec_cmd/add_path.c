@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:23:50 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 23:40:03 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/17 22:10:29 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int    file_is_executable (t_cmd *cmd, char    *command)
     else
     {
         notify_error(PERMISSION_DENIED, cmd->cmd);
-        *(data.status.exit_code) = 126;
+        (data.status.exit_code) = 126;
         free (command);
         return (0);
     }
@@ -71,13 +71,13 @@ int    add_path(t_cmd *cmd, char   *t_command)
         else
         {
             notify_error(PERMISSION_DENIED, cmd->cmd);
-            *(data.status.exit_code) = 126;
+            (data.status.exit_code) = 126;
             return (1);
         }
     }
     if (!test_paths(cmd))
         return (0);
     notify_error(CMD_NOT_FOUND, cmd->cmd);
-    *(data.status.exit_code) = 127;
+    (data.status.exit_code) = 127;
     return (0);
 }

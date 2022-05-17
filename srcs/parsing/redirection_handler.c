@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 22:22:58 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/17 18:21:19 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 22:03:22 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void open_redir_files_in(t_cmd *cmd)
     temp = cmd->in_redirect_f;
     if (data.input_piped)
         data.c++;
-    while (temp && !(*data.status.exit_code))
+    while (temp && !(data.status.exit_code))
     {
         old_fd = cmd->input.fd;
         if(ft_lst_contain(&cmd->heredoc_delimits, (char *)temp->content) && (data.c == 1 || data.c % 2 == 0 ))
@@ -56,7 +56,7 @@ void open_redir_files_ou(t_cmd *cmd)
     t_list          *temp;
     int             old_fd;
 
-    if (*data.status.exit_code)
+    if (data.status.exit_code)
         return ;
     temp = cmd->out_redirect_f;
     while (temp)

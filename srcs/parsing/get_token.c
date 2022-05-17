@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 19:28:28 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/25 01:45:44 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/17 22:03:22 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void    ft_get_token (t_token **token)
 {
     t_spliter *f_sep;
 
-    if (*data.status.exit_code || !token)
+    if (data.status.exit_code || !token)
         return ;
     f_sep = ft_split_by_sep(data);
-    if (*data.status.exit_code)
+    if (data.status.exit_code)
     {
         ft_token_add_back(token, ft_token_new(f_sep));
         return ;

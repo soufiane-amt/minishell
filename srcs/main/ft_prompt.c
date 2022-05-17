@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/15 21:23:37 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/17 22:03:22 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 int open_prompt(char  **env)
 {
     t_token  **token;
-
     signal(SIGINT,ctl_c);
     signal(SIGQUIT, ctl_c);
     get_env_while_prompt('=', env);
@@ -26,7 +25,7 @@ int open_prompt(char  **env)
         if (!data.input)
             return (0);
         ft_collect_data();
-        if (!*data.status.exit_code && check_user_input(data.input))
+        if (!data.status.exit_code && check_user_input(data.input))
         {
             if (data.input_piped)
             {
@@ -36,7 +35,7 @@ int open_prompt(char  **env)
                 // ft_tokenprint (token);
                 free_tokens(token);
             }
-            else if (!*data.status.exit_code)
+            else if (!data.status.exit_code)
             {
                 exec_cmd_ln (token);
             }
@@ -45,7 +44,7 @@ int open_prompt(char  **env)
         if (data.status.status)
             notify_error(data.status.status, NULL);
         // exec_rebuilt_cmd(data);
-        // printf ("%d\n", *data.status.exit_code);
+        // printf ("%d\n", data.status.exit_code);
         free_t_data();
     }
     return 0;

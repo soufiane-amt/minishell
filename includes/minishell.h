@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/17 21:08:57 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 22:08:29 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct s_list
 typedef struct s_status
 {
 	char	*status;
-	int		*exit_code;
+	int		exit_code;
 }   t_status;
 
 //structures
