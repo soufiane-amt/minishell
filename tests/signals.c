@@ -8,7 +8,6 @@ void if_sig(int sig)
     printf(" sig is %d\n", sig);
     exit(1);
 }
-
 int main()
 {
     

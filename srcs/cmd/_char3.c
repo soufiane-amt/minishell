@@ -6,18 +6,41 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:35:20 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/14 14:49:01 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 18:00:44 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int func_is1(char *str)
+int	really(char *str, int to)
 {
-	int i;
-	int is;
-	int count;
-	
+	int	i;
+	int	is;
+
+	i = 0;
+	is = -1;
+	while (str[i] && i <= to)
+	{
+		if (str[i] == '\'')
+		{
+			if (is == -1)
+				is = 0;
+			else if (is == 0)
+				is = 1;
+			else if (is == 1)
+				is = -1;
+		}
+		i++;
+	}
+	return (is);
+}
+
+int	func_is1(char *str)
+{
+	int	i;
+	int	is;
+	int	count;
+
 	count = 0;
 	i = 0;
 	is = -1;
@@ -25,9 +48,9 @@ int func_is1(char *str)
 	{
 		if (str[i] == '\'')
 		{
-			if(is == -1)
+			if (is == -1)
 				is = 0;
-			else if(is == 0)
+			else if (is == 0)
 				is = 1;
 			else if (is == 1)
 				is = 0;
@@ -37,15 +60,16 @@ int func_is1(char *str)
 		i++;
 	}
 	if (is == 1 && count % 2 == 0)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
-int func_is2(char *str)
+
+int	func_is2(char *str)
 {
-	int i;
-	int is;
-	int count;
-	
+	int	i;
+	int	is;
+	int	count;
+
 	count = 0;
 	i = 0;
 	is = -1;
@@ -53,9 +77,9 @@ int func_is2(char *str)
 	{
 		if (str[i] == '\"')
 		{
-			if(is == -1)
+			if (is == -1)
 				is = 0;
-			else if(is == 0)
+			else if (is == 0)
 				is = 1;
 			else if (is == 1)
 				is = 0;
@@ -65,16 +89,16 @@ int func_is2(char *str)
 		i++;
 	}
 	if (is == 1 && count % 2 == 0)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
 
-int is_ex12(char *str, char c)
+int	is_ex12(char *str, char c)
 {
 	if (c == '\'')
-		return(func_is1(str));
+		return (func_is1(str));
 	if (c == '\"')
-		return(func_is2(str));
+		return (func_is2(str));
 	else
 		return (-1);
 }

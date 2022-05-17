@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 23:40:07 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/17 17:59:24 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,7 @@ int     who_first(char *str);
 int     cpy_var(char *str, char *var, char c);
 int     size_var(char *str, char c);
 int		is_ex12(char *str, char c);
+int		really(char *str, int to);
 //main funcs
 int		open_prompt(char **env);
 

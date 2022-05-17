@@ -6,39 +6,16 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/17 17:27:31 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 19:02:25 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int really(char *str, int to)
+static void	expand_quotes(char *str)
 {
-    int i;
-    int is;
-    
-    i = 0;
-    is = -1;
-    while (str[i] && i <= to)
-    {
-        if (str[i] == '\'')
-        {
-            if(is == -1)
-                is = 0;
-            else if (is == 0)
-                is = 1;
-            else if(is == 1)
-                is = -1;
-        }
-        i++;
-    }
-    return (is);
-}
-
-static void expand_quotes(char *str)
-{
-	int i;
-	int is_first;
+	int	i;
+	int	is_first;
 
 	i = 0;
 	is_first = who_first(str);
@@ -48,7 +25,8 @@ static void expand_quotes(char *str)
 			str[i] = -6;
 		if (str[i] == '\'' && is_first == 0)
 			str[i] = -5;
-		if (str[i] == '$' && (is_first != 0 || (is_first == 0 && really(str, i) != 0)))
+		if (str[i] == '$' && (is_first != 0 || (is_first == 0
+				&& really(str, i) != 0)))
 			str[i] = -7;
 		i++;
 	}
@@ -115,6 +93,7 @@ char *_char(char *str)
 	else
 		return ("syntax error");// not good here
 	new_str = last(str);
+	printf("***> |%c|\n", new_str[i]);
 	_last = ft_strdup("");
 	while (new_str[i])
 	{
@@ -122,18 +101,9 @@ char *_char(char *str)
 			_last = ft_charjoin(_last, new_str[i]);
 		if (new_str[i] == -5 || new_str[i] == -6)
 			j++;
-        //free here
+		//free here
 		i++;
 	}
 	_last[i - j] = '\0';
 	return (_last);// what if its NULL
 }
-
-// int main()
-// {
-// 	char *str;
-// 	char *newst;
-// 	str = strdup("$USER");
-// 	newst = _char(str);
-// 	printf("%s\n", newst);
-// }

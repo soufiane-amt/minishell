@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_handler.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 22:22:58 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/17 00:14:22 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/17 18:21:19 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void open_redir_files_ou(t_cmd *cmd)
     {
         old_fd = cmd->output.fd;
         cmd->output.fd= open(temp->content, O_CREAT | O_RDWR | cmd->output.mode, 0644);
-        if (!cmd->input.fd)
+        if (!cmd->output.fd)
         {
             chstatus(FD_ERROR, NULL, 55);
             return ;

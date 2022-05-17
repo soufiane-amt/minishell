@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_built_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:38:28 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 18:35:53 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/17 18:37:47 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ int	is_built_cmd(t_cmd *cmd)
 	lowerchar(cmd->cmd);
 	if(!ft_strcmp(cmd->cmd, "echo"))
 		return (1);
-	else if(!ft_strcmp(_char(cmd->cmd), "pwd"))
+	else if(!ft_strcmp(cmd->cmd, "pwd"))
 		return (2);
-    else if(!ft_strcmp(_char(cmd->cmd), "unset"))
+    else if(!ft_strcmp(cmd->cmd, "unset"))
 		return (3);
-	else if(!ft_strcmp(_char(cmd->cmd), "env"))
+	else if(!ft_strcmp(cmd->cmd, "env"))
 		return (4);
-	else if(!ft_strcmp(_char(cmd->cmd), "export"))
+	else if(!ft_strcmp(cmd->cmd, "export"))
 		return (5);
-    else if(!ft_strcmp(_char(cmd->cmd), "cd"))
+    else if(!ft_strcmp(cmd->cmd, "cd"))
 		return (6);
-	else if(!ft_strcmp(_char(cmd->cmd), "exit"))
+	else if(!ft_strcmp(cmd->cmd, "exit"))
 		return (7);
 	return (0);
 }

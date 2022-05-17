@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:34:51 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/17 13:41:06 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 19:06:24 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void    ft_replace_with_acctual_values(t_cmd *cmd)
     while (temp)
     {
         to_free = temp->content;
+        printf(">>> |%s|\n", temp->content);
         temp->content = _char(temp->content);
         free(to_free);
         temp = temp->next;

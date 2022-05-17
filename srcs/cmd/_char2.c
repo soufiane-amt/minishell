@@ -3,50 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   _char2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:25:21 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/16 20:14:53 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/17 17:57:42 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int size_var(char *str, char c)
+int	size_var(char *str, char c)
 {
-	int i;
-	int count;
-	
+	int	i;
+	int	count;
+
 	i = 0;
 	count = 0;
-	while(str[i])
+	while (str[i])
 	{
-	  if (str[i] == c)
-		  break;
-	  i++;
+		if (str[i] == c)
+			break ;
+		i++;
 	}
 	if (str[i] == '$')
 		i++;
 	while ((str[i] && str[i] != c)
-		&& ((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')))
+		&& ((str[i] >= 'A' && str[i] <= 'Z')
+			|| (str[i] >= 'a' && str[i] <= 'z')))
 	{
 		count++;
 		i++;
-
 	}
 	return (count);
 }
 
-int  cpy_var(char *str, char *var, char c)
+int	cpy_var(char *str, char *var, char c)
 {
-	int i;
-	int j;
-	
+	int	i;
+	int	j;
+
 	i = 0;
 	j = 0;
 	while (str[i] && str[i] == c)
 		i++;
-	while (str[i] && str[i] != c && ((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')))
+	while (str[i] && str[i] != c
+		&& ((str[i] >= 'A' && str[i] <= 'Z')
+			|| (str[i] >= 'a' && str[i] <= 'z')))
 	{
 		var[j] = str[i];
 		i++;
@@ -91,14 +93,14 @@ char	*ft_charjoin(char *s1, char c)
 	return (output);
 }
 
-int who_first(char *str)
+int	who_first(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if(str[i] == '\'')
+		if (str[i] == '\'')
 			return (0);
 		if (str[i] == '"')
 			return (1);
