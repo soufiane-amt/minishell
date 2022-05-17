@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   _char.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/16 20:16:55 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/17 13:39:16 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int realy(char *str, int to)
+{
+    int i;
+    int is;
+    
+    i = 0;
+    is = -1;
+    while (str[i] && i <= to)
+    {
+        if (str[i] == '\'')
+        {
+            if(is == -1)
+                is = 0;
+            else if (is == 0)
+                is = 1;
+            else if(is == 1)
+                is = -1;
+        }
+        i++;
+    }
+    return (is);
+}
 
 static void expand_quotes(char *str)
 {
@@ -25,7 +48,7 @@ static void expand_quotes(char *str)
 			str[i] = -6;
 		if (str[i] == '\'' && is_first == 0)
 			str[i] = -5;
-		if (str[i] == '$' && is_first != 0)// && sh_expand(str, '\'') != 0
+		if (str[i] == '$' && (is_first != 0 || (is_first == 0 && realy(str, i) != 0)))
 			str[i] = -7;
 		i++;
 	}
@@ -61,6 +84,7 @@ static int go(char *str)
 {
 	char c;
 
+	c = 0;
 	if (who_first(str) == 1)
 		c = '\"';
 	else if (who_first(str) == 0)
