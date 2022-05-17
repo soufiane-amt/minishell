@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:20:39 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/16 22:29:49 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/17 17:21:14 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ void ft_echo(t_cmd *cmd)
 	}
     while(arg)
     {	
-		printf("%s ",arg->content);
+		printf("[%s]",arg->content);
+		if (arg->next)
+			printf(" ");
         arg = arg->next;
     }
 	if (is_nl == 0)

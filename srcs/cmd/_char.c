@@ -6,13 +6,13 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/17 13:39:16 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:27:31 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int realy(char *str, int to)
+static int really(char *str, int to)
 {
     int i;
     int is;
@@ -48,7 +48,7 @@ static void expand_quotes(char *str)
 			str[i] = -6;
 		if (str[i] == '\'' && is_first == 0)
 			str[i] = -5;
-		if (str[i] == '$' && (is_first != 0 || (is_first == 0 && realy(str, i) != 0)))
+		if (str[i] == '$' && (is_first != 0 || (is_first == 0 && really(str, i) != 0)))
 			str[i] = -7;
 		i++;
 	}
@@ -113,18 +113,20 @@ char *_char(char *str)
 	if (go(str) != -1)
 		expand_quotes(str);
 	else
-		return "syntax error";
+		return ("syntax error");// not good here
 	new_str = last(str);
-	_last = NULL;
+	_last = ft_strdup("");
 	while (new_str[i])
 	{
 		if (new_str[i] != -5 && new_str[i] != -6)
 			_last = ft_charjoin(_last, new_str[i]);
+		if (new_str[i] == -5 || new_str[i] == -6)
+			j++;
         //free here
 		i++;
 	}
-	_last[i] = '\0';
-	return (_last);
+	_last[i - j] = '\0';
+	return (_last);// what if its NULL
 }
 
 // int main()
