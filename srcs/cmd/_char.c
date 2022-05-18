@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/17 22:58:01 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 12:14:36 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,24 @@ static void	expand_quotes(char *str)
 		i++;
 	}
 }
-static char *last(char *str)
+char *last(char *str)
 {
 	int i;
 	char *var;
 	char *st;
 
 	i = 0;
-	st = strdup("");
+	st = ft_strdup("");
 	while(str[i])
 	{
 		if (str[i] == -7)
 		{
 			var = malloc(size_var(str, '$') + 1);
+            if (!var)
+            {
+                chstatus(MEMORY_LACK, NULL, 30);
+                return (NULL);
+            }
 			i+= cpy_var(&str[i], var, -7);
 			printf("****> hello var %s", var);
 			if (!getenv(var))
@@ -88,6 +93,7 @@ char *_char(char *str)
 	int is_first;
 	char *_last;
 
+    
 	i = 0;
 	j = 0;
 	is_first = who_first(str);

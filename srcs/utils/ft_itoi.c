@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 21:06:12 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/17 21:09:41 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 21:47:16 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,11 @@ char	*ft_itoa(int n)
 		i++;
 	j = i + sign;
 	str = (char *) malloc (sizeof(char) * (j + 1));
-	if (!str)
-		return (NULL);
+    if (!str)
+    {
+        chstatus(MEMORY_LACK, NULL, 30);
+        return (NULL);
+    }
 	str = fill(n, j, sign, str);
 	return (str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:03:40 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/17 20:19:01 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 21:46:00 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,11 @@ void    ft_export(t_cmd *cmd)
     {
         var = malloc(size_var_val(l->content, 1, '=') + 1);
         val = malloc(size_var_val(l->content, 0, '=') + 1);
-        if (!var)
+        if (!var || !val)
+        {
+            chstatus(MEMORY_LACK, NULL, 30);
             return ;
+        }
         else
         {   
             cpy_var_val(l->content, var, val, '=');
