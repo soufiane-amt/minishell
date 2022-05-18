@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 16:43:48 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:54:05 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int open_prompt(char  **env)
     signal(SIGINT,ctl_c);
     signal(SIGQUIT, ctl_c);
     get_env_while_prompt('=', env);
+    data.status.exit_code = 0;
     while (1)
     {
         data.input = readline("𝖒𝖎𝖓𝖎𝖘𝖍𝖊𝖑𝖑➜");

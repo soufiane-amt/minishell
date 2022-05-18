@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/18 19:00:58 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 20:29:26 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,16 +108,8 @@ char	*_char(char *str)
 		chstatus(SYNTAX_ERROR, NULL, 30);
 		return (NULL);
 	}
-	while (new_str[i] && _last)
-	{
-		if (new_str[i] != -5 && new_str[i] != -6)
-			_last = ft_charjoin(_last, new_str[i]);
-		if (new_str[i] == -5 || new_str[i] == -6)
-			j++;
-		i++;
-	}
-	_last[i - j] = '\0';
-	free(new_str);
+	if (ft_expand(&_last, new_str) < 0)
+		return (NULL);
 	if (!ft_strcmp(_last, " "))
 		_last = ft_strdup("");	
 	if (!_last)

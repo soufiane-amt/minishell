@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 23:51:58 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/17 22:04:22 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:53:53 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void    ft_init_t_data ()
 {
-    data.status.exit_code = 0;
     data.input_piped = FALSE;
     data.i = 0;
     data.j = 0;

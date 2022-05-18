@@ -11,7 +11,7 @@ READ= -L /goinfre/$(USER)/.brew/opt/readline/lib -lreadline
 RL_INCLUDE = -I /goinfre/$(USER)/.brew/opt/readline/include
 
 CMD_SRC = ft_echo exec_built is_built_cmd ft_pwd ft_env ft_exit\
-			ft_export ft_unset ft_cd _char _char2 _char3
+			ft_export ft_unset ft_cd _char _char2 _char3 _char4
 
 DATA_SRC = free_data collect_data free_utils
 
