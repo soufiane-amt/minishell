@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/18 12:14:36 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 13:35:37 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,51 +25,47 @@ static void	expand_quotes(char *str)
 			str[i] = -6;
 		if (str[i] == '\'' && is_first == 0)
 			str[i] = -5;
-		if ((str[i] == '$') && (is_first != 0 || (is_first == 0
-				&& really(str, i) != 0)))
+		if ((str[i] == '$') && (is_first == 0
+					&& really(str, i) != 0))
 			str[i] = -7;
-		if ((str[i] == '?') && (is_first != 0 || (is_first == 0
-				&& really(str, i) != 0)))
-			str[i] = -8;
+		else if (str[i] == '$' && is_first != 0)
+			str[i] = -7;
 		i++;
 	}
 }
-char *last(char *str)
+
+char	*last(char *str)
 {
-	int i;
-	char *var;
-	char *st;
+	int		i;
+	char	*var;
+	char	*st;
 
 	i = 0;
 	st = ft_strdup("");
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == -7)
 		{
 			var = malloc(size_var(str, '$') + 1);
-            if (!var)
-            {
-                chstatus(MEMORY_LACK, NULL, 30);
-                return (NULL);
-            }
-			i+= cpy_var(&str[i], var, -7);
-			printf("****> hello var %s", var);
-			if (!getenv(var))
-				st = ft_strjoin(st, "");
-			else
-				st = ft_strjoin(st, get_env(var));
+			if (!var)
+			{
+				chstatus(MEMORY_LACK, NULL, 30);
+				return (NULL);
+			}
+			i = i + cpy_var(&str[i], var, -7);
+			get_value_from_enver(&st, var);
 			free(var);
 		}
 		else
-			st = ft_charjoin(st,str[i]);
+			st = ft_charjoin(st, str[i]);
 		i++;
 	}
-	return(st);
+	return (st);
 }
 
-static int go(char *str)
+static	int	go(char *str)
 {
-	char c;
+	char	c;
 
 	c = 0;
 	if (who_first(str) == 1)
@@ -85,7 +81,7 @@ static int go(char *str)
 	return (1);
 }
 
-char *_char(char *str)
+char	*_char(char *str)
 {
 	int i;
 	int j;
@@ -93,7 +89,7 @@ char *_char(char *str)
 	int is_first;
 	char *_last;
 
-    
+	
 	i = 0;
 	j = 0;
 	is_first = who_first(str);

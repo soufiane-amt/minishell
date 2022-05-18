@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 21:41:28 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/25 02:03:49 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:02:28 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	tt_free(char **str_tab, int i)
 		j++;
 	}
 	free(str_tab);
-    str_tab = NULL;
+	str_tab = NULL;
 }
 
 static int	totalwords(char *str, char c)
@@ -93,7 +93,7 @@ static int	split(char **f_s, char c, int size, char *str)
 			str++;
 	}
 	f_s[size] = 0;
-    return (1);
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -108,10 +108,10 @@ char	**ft_split(char const *s, char c)
 	str = (char *)s;
 	f_s = (char **) malloc (sizeof(char *) * (totalwords((char *)s, c) + 1));
 	if (!f_s)
-    {
-        chstatus(MEMORY_LACK, NULL, 30);
-        return (NULL);
-    }
+	{
+		chstatus(MEMORY_LACK, NULL, 30);
+		return (NULL);
+	}
 	if (!split(f_s, c, totalwords((char *)s, c), str))
 		return (NULL);
 	return (f_s);

@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:01:49 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/12 23:01:50 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:44:52 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "minishell.h"
 
-int			ft_getstart(const char *s1, const char *set)
+int	ft_getstart(const char *s1, const char *set)
 {
 	size_t	len;
 	size_t	i;
@@ -29,7 +28,7 @@ int			ft_getstart(const char *s1, const char *set)
 	return (i);
 }
 
-int			ft_getend(const char *s1, const char *set)
+int	ft_getend(const char *s1, const char *set)
 {
 	size_t	len;
 	size_t	i;
@@ -45,7 +44,7 @@ int			ft_getend(const char *s1, const char *set)
 	return (len - i);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		start;
 	int		end;
@@ -61,10 +60,10 @@ char		*ft_strtrim(char const *s1, char const *set)
 		return (ft_strdup(""));
 	newstr = (char *)malloc(sizeof(char) * (end - start + 1));
 	if (!newstr)
-    {
-        chstatus(MEMORY_LACK, NULL, 30);
-        return (NULL);
-    }
+	{
+		chstatus(MEMORY_LACK, NULL, 30);
+		return (NULL);
+	}
 	ft_strlcpy(newstr, s1 + start, end - start + 1);
 	return (newstr);
 }

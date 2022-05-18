@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:01:34 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/12 23:01:35 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:41:06 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "minishell.h"
 
@@ -25,10 +24,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	s2_s = ft_strlen(s2);
 	str = (char *) malloc (sizeof(char) * (s1_s + s2_s + 1));
 	if (!str)
-    {
-        chstatus(MEMORY_LACK, NULL, 30);
-        return (NULL);
-    }
+	{
+		chstatus(MEMORY_LACK, NULL, 30);
+		return (NULL);
+	}
 	ft_strlcpy(str, s1, s1_s + 1);
 	while (i < s2_s)
 	{
@@ -39,11 +38,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str[s1_s] = 0;
 	return (str);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int main ()
-{
-	printf("%s\n", ft_strjoin("Soufiane", " Amajat"));
-}
-*/

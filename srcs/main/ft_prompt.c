@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/17 22:03:22 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:43:48 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int open_prompt(char  **env)
                 token = init_token();
                 ft_get_token(token);
                 exec_cmd_ln (token);
-                // ft_tokenprint (token);
                 free_tokens(token);
             }
             else if (!data.status.exit_code)
@@ -43,8 +42,6 @@ int open_prompt(char  **env)
         }
         if (data.status.status)
             notify_error(data.status.status, NULL);
-        // exec_rebuilt_cmd(data);
-        // printf ("%d\n", data.status.exit_code);
         free_t_data();
     }
     return 0;

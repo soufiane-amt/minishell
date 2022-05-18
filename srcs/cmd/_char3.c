@@ -6,11 +6,35 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:35:20 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/17 18:00:44 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:49:49 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	get_value_from_enver(char *st, char *var)
+{
+	char	*forfree;
+
+	if (!ft_strcmp(var, "?"))
+	{
+		forfree = *st;
+		*st = ft_strjoin(st, ft_itoa(data.status.exit_code));
+		free(forfree);
+	}
+	else if (!getenv(var))
+	{
+		forfree = *st;
+		*st = ft_strjoin(st, "");
+		free(forfree);
+	}
+	else
+	{
+		forfree = *st;
+		*st = ft_strjoin(st, get_env(var));
+		free(forfree);
+	}
+}
 
 int	really(char *str, int to)
 {

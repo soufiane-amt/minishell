@@ -6,41 +6,38 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:02:55 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/17 21:01:28 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:33:15 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void new_oldpwd(char *str)
+void	new_oldpwd(char *str)
 {
-	t_env *e;
+	t_env	*e;
 
 	e = data.enver;
 	while (e)
 	{
 		if (!ft_strcmp(e->variable, "OLDPWD"))
 		{
-			e->value = ft_strdup(str); // free
+			e->value = ft_strdup(str);
 			break ;
 		}
 		e = e->next;
 	}
 }
 
-char *st(char *str)
+char	*st(char *str)
 {
 	return (str + 1);
 }
 
-void    ft_cd(t_cmd *cmd)
+void	set_oldpwd(void)
 {
-	char *path;
-	t_env *e;
-	t_list *arg;
+	t_env	*e;
 
 	e = data.enver;
-	arg = cmd->args;
 	while (e)
 	{
 		if (!ft_strcmp(e->variable, "PWD"))
@@ -50,15 +47,24 @@ void    ft_cd(t_cmd *cmd)
 		}
 		e = e->next;
 	}
+}
+
+void	ft_cd(t_cmd *cmd)
+{
+	char	*path;
+	t_list	*arg;
+
+	arg = cmd->args;
+	set_oldpwd();
 	if (!arg)
 		chdir(get_env("HOME"));
 	else if (((char *)arg->content)[0] == '~' || !arg->content)
 	{
-		path = ft_strjoin(getenv("HOME"), st(_char(arg->content)));
+		path = ft_strjoin(getenv("HOME"), st(arg->content));
 		if (chdir(path))
 			printf("minishell: cd: %s: %s\n", path, strerror(2));
 		free (path);
 	}
-	else if (chdir(_char(arg->content)))
+	else if (chdir(arg->content))
 		printf("minishell: cd: %s: %s\n", arg->content, strerror(2));
 }
