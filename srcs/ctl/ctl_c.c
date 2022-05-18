@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ctl_c.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:15:27 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/17 22:11:10 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:38:56 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void  ctl_c(int sig)
         rl_replace_line("", 0);
         rl_redisplay();
         data.status.exit_code = 0;
-        return ;
+        exit(1) ;
     }//we should use exit function for free
     data.status.exit_code = 0;
 }

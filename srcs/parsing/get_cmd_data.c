@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 19:07:02 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/18 17:47:23 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:32:41 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	get_cmd(t_cmd *cmd)
 {
-	cmd->cmd = ft_strdup(_char((char *)cmd->ex_elements->content));
+	cmd->cmd = ft_strdup(cmd->ex_elements->content);
 	if (!cmd->cmd)
 		chstatus(MEMORY_LACK, NULL, 30);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd_ln.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:39:59 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/17 22:03:22 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 22:48:06 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void    exec_one_cmd()
     exec_cmd(one_cmd);
     waitpid(-1, NULL, 0);
     free_cmd(one_cmd);
-
 }
 
 void    exec_multiple_cmd(t_token **token)

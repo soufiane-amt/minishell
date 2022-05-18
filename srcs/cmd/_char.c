@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _char.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/18 20:29:26 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 23:14:33 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ char	*last(char *str)
 			}
 			i = i + cpy_var(&str[i], var, -7);
 			get_value_from_enver(&st, var);
-			free(var);
 		}
 		else
 			st = ft_charjoin(st, str[i]);
@@ -108,6 +107,7 @@ char	*_char(char *str)
 		chstatus(SYNTAX_ERROR, NULL, 30);
 		return (NULL);
 	}
+    puts("--------\n");
 	if (ft_expand(&_last, new_str) < 0)
 		return (NULL);
 	if (!ft_strcmp(_last, " "))

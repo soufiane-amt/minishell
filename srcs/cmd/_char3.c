@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _char3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:35:20 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/18 19:56:25 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:55:53 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 void	get_value_from_enver(char **st, char *var)
 {
 	char	*forfree;
+	char	*ffree;
 
 	if (!ft_strcmp(var, "?"))
 	{
 		forfree = *st;
-		printf("exit code %d\n ", data.status.exit_code);
-		*st = ft_strjoin(*st, ft_itoa(data.status.exit_code));
+        ffree = ft_itoa(data.status.exit_code);
+		*st = ft_strjoin(*st, ffree);
 		free(forfree);
+		free(ffree);
 	}
 	else if (!getenv(var))
 	{
@@ -35,6 +37,7 @@ void	get_value_from_enver(char **st, char *var)
 		*st = ft_strjoin(*st, get_env(var));
 		free(forfree);
 	}
+    free(var);
 }
 
 int	really(char *str, int to)

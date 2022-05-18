@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+;/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
@@ -272,6 +272,7 @@ void    free_cmd (t_cmd *cmd);
 void    free_spliter (t_spliter *spliter, int   last_token);
 void    free_arr(void **arr);
 void    free_t_data();
+void    free_enver();
 
 //get_next_line
 char	*get_next_line(int fd);

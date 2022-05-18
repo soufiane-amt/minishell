@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:56:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 16:33:12 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 23:05:11 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,20 @@ void	free_spliter(t_spliter *spliter, int last_token)
 	spliter = NULL;
 }
 
+void free_enver(void)
+{
+   t_env *temp;
+   t_env *temp2;
+
+   temp = data.enver;
+   while (temp)
+   {
+       temp2 = temp->next;
+       free(temp->variable);
+       free(temp->value);
+       temp = temp2;
+   }
+}
 void	free_tokens(t_token **token)
 {
 	t_token	*temp;
