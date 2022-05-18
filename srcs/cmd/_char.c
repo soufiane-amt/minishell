@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/18 13:35:37 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:00:58 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,20 +97,33 @@ char	*_char(char *str)
 	if (go(str) != -1)
 		expand_quotes(str);
 	else
-		return ("syntax error");// not good here
+	{
+		chstatus(SYNTAX_ERROR, NULL, 30);
+		return (NULL);
+	}
 	new_str = last(str);
 	_last = ft_strdup("");
-	while (new_str[i])
+	if (!_last)
+	{
+		chstatus(SYNTAX_ERROR, NULL, 30);
+		return (NULL);
+	}
+	while (new_str[i] && _last)
 	{
 		if (new_str[i] != -5 && new_str[i] != -6)
 			_last = ft_charjoin(_last, new_str[i]);
 		if (new_str[i] == -5 || new_str[i] == -6)
 			j++;
-		//free here
 		i++;
 	}
 	_last[i - j] = '\0';
+	free(new_str);
 	if (!ft_strcmp(_last, " "))
-		_last = ft_strdup("");
-	return (_last);// what if its NULL
+		_last = ft_strdup("");	
+	if (!_last)
+	{
+		chstatus(MEMORY_LACK, NULL, 55);
+		return (NULL);
+	}
+	return (_last);
 }
