@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/17 21:25:33 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/17 22:58:01 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char *last(char *str)
 		{
 			var = malloc(size_var(str, '$') + 1);
 			i+= cpy_var(&str[i], var, -7);
-			// printf("* * * * > > %d\n", var[0]);
+			printf("****> hello var %s", var);
 			if (!getenv(var))
 				st = ft_strjoin(st, "");
 			else
