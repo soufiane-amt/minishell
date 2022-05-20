@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _char3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:35:20 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/18 21:55:53 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/20 14:03:19 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	get_value_from_enver(char **st, char *var)
 	if (!ft_strcmp(var, "?"))
 	{
 		forfree = *st;
-        ffree = ft_itoa(data.status.exit_code);
+		ffree = ft_itoa(data.status.exit_code);
 		*st = ft_strjoin(*st, ffree);
 		free(forfree);
 		free(ffree);
@@ -37,10 +37,10 @@ void	get_value_from_enver(char **st, char *var)
 		*st = ft_strjoin(*st, get_env(var));
 		free(forfree);
 	}
-    free(var);
+	free(var);
 }
 
-int	really(char *str, int to)
+int	really(char *str, int to, char c)
 {
 	int	i;
 	int	is;
@@ -49,14 +49,14 @@ int	really(char *str, int to)
 	is = -1;
 	while (str[i] && i <= to)
 	{
-		if (str[i] == '\'')
+		if (str[i] == c)
 		{
 			if (is == -1)
 				is = 0;
 			else if (is == 0)
 				is = 1;
 			else if (is == 1)
-				is = -1;
+				is = 0;
 		}
 		i++;
 	}

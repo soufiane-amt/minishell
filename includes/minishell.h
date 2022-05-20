@@ -210,7 +210,7 @@ int     who_first(char *str);
 int     cpy_var(char *str, char *var, char c);
 int     size_var(char *str, char c);
 int		is_ex12(char *str, char c);
-int		really(char *str, int to);
+int		really(char *str, int to, char c);
 void	get_value_from_enver(char **st, char *var);
 int		ft_expand(char **_last, char *str);
 //main funcs

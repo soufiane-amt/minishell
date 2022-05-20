@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _char.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/18 23:14:33 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/20 14:09:07 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ static void	expand_quotes(char *str)
 	{
 		if (str[i] == '"' && is_first == 1)
 			str[i] = -6;
-		if (str[i] == '\'' && is_first == 0)
+		else if (str[i] == '\'' && is_first == 0)
 			str[i] = -5;
-		if ((str[i] == '$') && (is_first == 0
-					&& really(str, i) != 0))
-			str[i] = -7;
-		else if (str[i] == '$' && is_first != 0)
+		i++;
+	}
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '$' && really(str, i, -5) != 0)
 			str[i] = -7;
 		i++;
 	}
@@ -107,7 +109,6 @@ char	*_char(char *str)
 		chstatus(SYNTAX_ERROR, NULL, 30);
 		return (NULL);
 	}
-    puts("--------\n");
 	if (ft_expand(&_last, new_str) < 0)
 		return (NULL);
 	if (!ft_strcmp(_last, " "))
