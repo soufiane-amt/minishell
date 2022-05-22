@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:39:59 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 22:48:06 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/22 21:46:07 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void    exec_one_cmd()
     t_cmd   *one_cmd;
 
     one_cmd = get_cmd_data (data.input);
-    if (data.status.exit_code)
+    if ((*data.status.exit_code))
     {
         free_cmd(one_cmd);
         return ;
@@ -48,7 +48,7 @@ void    exec_multiple_cmd(t_token **token)
 void    exec_cmd_ln(t_token **token)
 {
     (void)token;
-    if (data.status.exit_code)
+    if ((*data.status.exit_code))
         return ;
     if ( !data.input_piped)
         exec_one_cmd();

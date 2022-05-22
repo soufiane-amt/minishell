@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_t_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 23:51:58 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 19:53:53 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/22 21:52:38 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 
 void    ft_init_t_data ()
 {
+    static  int i;
+    data.status.status = NULL;
+    data.status.exit_code = malloc (sizeof(int));
+    if (!data.status.exit_code)
+    {
+        if(data.input)
+            free (data.input);
+        exit(30);
+    }
+    if (!i)
+        *(data.status.exit_code) = 0;
+    i++;
     data.input_piped = FALSE;
     data.i = 0;
     data.j = 0;

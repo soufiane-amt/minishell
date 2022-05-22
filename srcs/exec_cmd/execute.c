@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:13:23 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 22:46:15 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/22 21:57:56 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void     close_fd (t_cmd *cmd,int    close_all)
 
 void    exec_cmd_in_child_process(t_cmd *cmd, int cmd_type)
 {
+    // (*data.status.exit_code) = 0;
     if (cmd->input.fd != STDIN_FILENO)
         dup2 (cmd->input.fd, STDIN_FILENO);
     if (cmd->output.fd != STDOUT_FILENO)
@@ -46,7 +47,7 @@ void    exec_cmd_in_child_process(t_cmd *cmd, int cmd_type)
         execve (cmd->f_cmd[0], cmd->f_cmd, data.env);
     else
         exec_built_cmd(cmd, cmd_type);
-    (data.status.exit_code) = 1;
+    ((*data.status.exit_code)) = 1;
     exit(1);
 }
 
@@ -79,14 +80,14 @@ void    exec_cmd (t_cmd *cmd)
 //     //mind the exit!!!!!!!!!
 //     if (id == 0)
 //     {
-//         (data.status.exit_code) = 0;
+//         ((*data.status.exit_code)) = 0;
 //         if (cmd->input.fd != STDIN_FILENO)
 //             dup2 (cmd->input.fd, STDIN_FILENO);
 //         if (cmd->output.fd != STDOUT_FILENO)
 //             dup2 (cmd->output.fd, STDOUT_FILENO);
 //         close_fd(cmd, 1);
 //         execve (cmd->f_cmd[0], cmd->f_cmd, data.env);
-//         (data.status.exit_code) = 1;
+//         ((*data.status.exit_code)) = 1;
 //         exit(1);
 //     }
 //     close_fd(cmd, 0);

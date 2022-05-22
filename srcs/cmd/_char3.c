@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _char3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:35:20 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/20 14:03:19 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/22 21:46:07 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	get_value_from_enver(char **st, char *var)
 	if (!ft_strcmp(var, "?"))
 	{
 		forfree = *st;
-		ffree = ft_itoa(data.status.exit_code);
+		ffree = ft_itoa((*data.status.exit_code));
 		*st = ft_strjoin(*st, ffree);
 		free(forfree);
 		free(ffree);

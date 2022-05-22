@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_syntax.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 15:11:23 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 16:44:43 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/22 21:46:07 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_prenthesis(char	*str)
 	int	b;
 	int	j;
 
-	if (data.status.exit_code)
+	if ((*data.status.exit_code))
 		return (0);
 	i = -1;
 	a = 0;
@@ -82,7 +82,7 @@ int     redirections_are_valid(t_cmd *cmd, char *command)
 	char    *next_element;
 
 	ft_extract_data(cmd, command);
-	if (data.status.exit_code)
+	if ((*data.status.exit_code))
 		return (0);
 	temp = cmd->ex_elements;
 	while (temp && temp->next)
@@ -106,7 +106,7 @@ int     redirections_are_valid(t_cmd *cmd, char *command)
 
 int     check_syntax (t_cmd *cmd, char    *command)
 {
-	if (data.status.exit_code)
+	if ((*data.status.exit_code))
 		return (0);
 	if(redirections_are_valid(cmd, command))
 		return (1);

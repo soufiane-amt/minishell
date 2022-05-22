@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_replace_values.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:34:51 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 18:46:26 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/22 21:46:07 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_replace_with_acctual_values(t_cmd *cmd)
 	{
 		to_free = temp->content;
 		temp->content = _char(temp->content);
-		if (data.status.exit_code)
+		if ((*data.status.exit_code))
 		{
 			free(to_free);
 			return ;

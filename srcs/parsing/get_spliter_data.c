@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_spliter_data.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 14:50:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 18:35:37 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/22 21:46:07 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**get_two_separated_cmd(char *str, char sep)
 
 	if (!str)
 		chstatus(MEMORY_LACK, NULL, 30);
-	if (data.status.exit_code)
+	if ((*data.status.exit_code))
 		return (NULL);
 	two_cmd = ft_split (str, sep);
 	if (!two_cmd)
@@ -79,7 +79,7 @@ t_spliter	*get_spliter(t_spliter *spliter)
 		&& data.input[data.l] != spliter->spec_char)
 		data.l++;
 	cmd = get_two_separated_cmd(ft_substr(data.input, data.j, data.l + 1), spliter->spec_char);
-	if (!cmd || data.status.exit_code || !get_spliter_data(spliter, cmd[0], cmd[1]))
+	if (!cmd || (*data.status.exit_code) || !get_spliter_data(spliter, cmd[0], cmd[1]))
 	{
 		free_arr((void **)cmd);
 		data.spliter_sucess = 0;

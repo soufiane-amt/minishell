@@ -91,7 +91,7 @@ typedef struct s_list
 typedef struct s_status
 {
 	char	*status;
-	int		exit_code;
+	int		*exit_code;
 }   t_status;
 
 //structures

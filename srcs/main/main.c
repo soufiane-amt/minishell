@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:49 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 21:57:33 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/22 21:31:08 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,4 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	open_prompt(env);
-    while (1);
 }
