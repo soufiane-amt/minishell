@@ -223,7 +223,7 @@ int		ft_expand(char **_last, char *str);
 void		open_prompt(char **env);
 
 // ctl
-void	ctl_c(int sig);
+void	ctl(int sig);
 void	signalize(void);
 
 //ft_lst

@@ -17,7 +17,7 @@ DATA_SRC = free_data collect_data free_utils
 
 M_SRC =  ft_prompt minishell
 
-CTL_SRC = ctl_c
+CTL_SRC = ctl
 
 P_SRC = get_token get_cmd_data get_spliter_data redirection_handler ft_extractor ft_replace_values redirection ft_main_extractor\
 		
