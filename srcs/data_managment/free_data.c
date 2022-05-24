@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:56:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/23 23:52:01 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/24 15:06:10 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void free_enver(void)
    while (temp)
    {
        temp2 = temp->next;
-       printf ("VARIABLE : |%s|\nVALUE : |%s|\n", temp->variable, temp->value);
        free(temp->variable);
        free(temp->value);
        temp = temp2;

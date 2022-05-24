@@ -3,53 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:02:55 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 01:11:12 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/24 16:45:46 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	new_oldpwd(char *str)
+void	new_oldpwd()
 {
 	t_env	*e;
-    char    *forfree;
 
 	e = data.enver;
 	while (e)
 	{
 		if (!ft_strcmp(e->variable, "OLDPWD"))
 		{
-            forfree = e->value;
-			e->value = ft_strdup(str);
-            free(forfree);
+			if (e->value)
+			{
+				free(e->value);
+				e->value =NULL;
+			}
+			e->value = ft_strdup(get_env("PWD"));
 			break ;
 		}
 		e = e->next;
 	}
 }
 
-char    *set_newpwd(char *new_path)
+void	set_newpwd()
 {
 	t_env	*e;
-    char    *forfree;
 
 	e = data.enver;
 	while (e)
 	{
 		if (!ft_strcmp(e->variable, "PWD"))
 		{
-            forfree = e->value;
-            new_oldpwd(forfree);
-			e->value = new_path;
-            free(forfree);
+			getcwd(e->value, PATH_MAX);
 			break ;
 		}
 		e = e->next;
 	}
-    return (e->value);
 }
 
 char	*st(char *str)
@@ -63,22 +60,23 @@ void	ft_cd(t_cmd *cmd)
 	t_list	*arg;
 
 	arg = cmd->args;
-	// new_newpwd();
 	if (!arg)
     {
+		new_oldpwd();
         chdir(get_env("HOME"));
-        set_newpwd(ft_pwd());
+        set_newpwd();
     }
 	else if (((char *)arg->content)[0] == '~')
 	{
 		path = ft_strjoin(getenv("HOME"), st(arg->content));
+		new_oldpwd();
 		if (chdir(path))
 			printf("minishell: cd: %s: %s\n", path, strerror(2));
-        set_newpwd(ft_pwd());
+        set_newpwd();
 		free (path);
 	}
 	else if (!chdir(arg->content))
-        set_newpwd(ft_pwd());
+        set_newpwd();
     else if (chdir(arg->content) == -1)
 		printf("minishell: cd: %s: %s\n", arg->content, strerror(2));
 }
