@@ -73,6 +73,8 @@
 
 #define TOO_MANY_ARGS "too many arguments."
 
+#define OTHER_ERR "ERROR!"
+
 //file not found error
 //Global variable
 
@@ -218,10 +220,11 @@ int		really(char *str, int to, char c);
 void	get_value_from_enver(char **st, char *var);
 int		ft_expand(char **_last, char *str);
 //main funcs
-int		open_prompt(char **env);
+void		open_prompt(char **env);
 
 // ctl
 void	ctl_c(int sig);
+void	signalize(void);
 
 //ft_lst
 t_list	*ft_lstlast(t_list *lst);
@@ -303,6 +306,13 @@ char *get_env(char *str);
 //utils expo
 int size_var_val(char *str, int x, char c);
 void cpy_var_val(char *str, char *var, char *val, char c);
+
+//extractors
+int	    extract_redir(t_cmd *cmd, char *str, int *i);
+int	    extract_quote(t_cmd *cmd, char	*str, int *i);
+int	    extract_norm(t_cmd *cmd, char *str, int *i);
+int	    ft_add_extracted_element(t_cmd *cmd, char *s);
+int	    is_delimter(char c, char *delimter);
 
 
 #endif

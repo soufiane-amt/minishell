@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_redirection.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 17:11:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 16:38:54 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/24 18:47:59 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,9 @@ int	input_redirection_is_valid(char *cmd)
 	i = 0;
 	j = 0;
 	cmd_size = ft_strlen(cmd);
-	while (cmd[i] != '<')
-	{
-		i++;
+	while (cmd[i++] != '<')
 		if (i == cmd_size)
 			return (1);
-	}
 	j = i;
 	if (cmd[j] && cmd[j] == '<')
 	{
@@ -51,12 +48,9 @@ int	output_redirection_is_valid(char	*cmd)
 	i = 0;
 	j = 0;
 	cmd_size = ft_strlen(cmd);
-	while (cmd[i] != '>')
-	{
-		i++;
+	while (cmd[i++] != '>')
 		if (i == cmd_size)
 			return (1);
-	}
 	j = i;
 	if (cmd[j] && cmd[j] == '>')
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:56:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 15:06:10 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/24 18:45:04 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ void	free_cmd(t_cmd *cmd)
 	if (!cmd)
 		return ;
 	if (cmd->cmd)
-	{
 		free(cmd->cmd);
-		cmd->cmd = NULL;
-	}
 	if (ft_lstsize(cmd->args))
 		ft_lstclear(&cmd->args, 1);
 	if (ft_lstsize(cmd->in_redirect_f))
@@ -47,10 +44,7 @@ void	free_cmd(t_cmd *cmd)
 	if (ft_lstsize(cmd->heredoc_delimits))
 		ft_lstclear(&cmd->heredoc_delimits, 1);
 	if (cmd ->cmd_str)
-	{
 		free (cmd->cmd_str);
-		cmd ->cmd_str = NULL;
-	}
 	if (cmd->f_cmd)
 		free_arr((void **)cmd->f_cmd);
 	if (cmd)
@@ -70,20 +64,21 @@ void	free_spliter(t_spliter *spliter, int last_token)
 	spliter = NULL;
 }
 
-void free_enver(void)
+void	free_enver(void)
 {
-   t_env *temp;
-   t_env *temp2;
+	t_env	*temp;
+	t_env	*temp2;
 
-   temp = data.enver;
-   while (temp)
-   {
-       temp2 = temp->next;
-       free(temp->variable);
-       free(temp->value);
-       temp = temp2;
-   }
+	temp = data.enver;
+	while (temp)
+	{
+		temp2 = temp->next;
+		free(temp->variable);
+		free(temp->value);
+		temp = temp2;
+	}
 }
+
 void	free_tokens(t_token **token)
 {
 	t_token	*temp;

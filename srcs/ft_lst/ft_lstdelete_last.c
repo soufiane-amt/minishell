@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 12:05:38 by samajat           #+#    #+#             */
-/*   Updated: 2022/03/29 13:32:55 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/24 19:47:16 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,3 @@ int	ft_tokendelete_last(t_token **token)
 	prelast -> next = NULL;
 	return (1);
 }
-

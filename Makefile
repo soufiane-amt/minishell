@@ -15,11 +15,11 @@ CMD_SRC = ft_echo exec_built is_built_cmd ft_pwd ft_env ft_exit\
 
 DATA_SRC = free_data collect_data free_utils
 
-M_SRC =  ft_prompt main
+M_SRC =  ft_prompt minishell
 
 CTL_SRC = ctl_c
 
-P_SRC = get_token get_cmd_data get_spliter_data redirection_handler ft_extractor ft_replace_values redirection\
+P_SRC = get_token get_cmd_data get_spliter_data redirection_handler ft_extractor ft_replace_values redirection ft_main_extractor\
 		
 
 U_SRC = ft_strcmp ft_strlen ft_split ft_strdup ft_substr  ft_strchr ft_utils_env_exp ft_strcpy ft_strjoin \
@@ -31,7 +31,7 @@ E_SRC        =        build_cmd exec_cmd_ln execute add_path ft_open_herdoc\
 
 LST_SRC = ft_lstadd_back ft_lstadd_front ft_lstclear \
 			ft_lstdelete_last ft_lstdelete_top ft_lstdelone \
-			ft_lstiter ft_lstlast ft_lstnew ft_lstprint ft_lstsize\
+			ft_lstiter ft_lstlast ft_lstnew ft_lstsize\
 			ft_lst_contain \
 
 G_SRC	= get_next_line\

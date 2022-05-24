@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 10:30:08 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/25 02:03:01 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/24 19:50:17 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,10 @@ char	*get_next_line(int fd)
 	i = 0;
 	buff = (char *) malloc (3);
 	if (!buff || !fd_is_valid(buff, fd))
-    {
-        chstatus(MEMORY_LACK, NULL, 30);
-        return (NULL);
-    }
-
+	{
+		chstatus(MEMORY_LACK, NULL, 30);
+		return (NULL);
+	}
 	str = get_new_line(str, buff, fd, &n);
 	line = get_line(&str);
 	if (!n && !line[0])

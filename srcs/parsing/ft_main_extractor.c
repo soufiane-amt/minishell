@@ -1,44 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_main_extractor.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 23:00:12 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 19:47:11 by samajat          ###   ########.fr       */
+/*   Created: 2022/05/24 19:53:28 by samajat           #+#    #+#             */
+/*   Updated: 2022/05/24 19:53:35 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include"minishell.h"
 
-void	ft_lstclear(t_list **lst, int free_content)
+void	ft_extract_data(t_cmd *cmd, char *command)
 {
-	t_list	*tmp;
+	int	a;
 
-	if (lst)
+	if (extract_norm(cmd, command, &data.e))
+		a = 0;
+	else if (extract_redir(cmd, command, &data.e))
+		a = 0;
+	else if (extract_quote(cmd, command, &data.e))
+		a = 0;
+	if ((command + data.e) && command[data.e])
 	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			ft_lstdelone(lst, free_content);
-			(*lst) = tmp;
-		}
+		ft_extract_data(cmd, command);
+		if ((*data.status.exit_code))
+			return ;
 	}
-}
-
-void	ft_env_clear(t_env **lst)
-{
-	t_env	*current;
-	t_env	*next;
-
-	current = *lst;
-	while (current)
-	{
-		next = current->next;
-		free (current);
-		current = next;
-	}
-	free (lst);
-	*lst = NULL;
+	else
+		ft_replace_with_acctual_values(cmd);
 }

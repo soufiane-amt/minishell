@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 22:23:36 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 18:13:38 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/24 19:59:38 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	get_cmd_in_redirct(t_cmd *cmd, t_list *temp)
 	}
 }
 
-void	get_cmd_redirect (t_cmd *cmd, t_list *temp)
+void	get_cmd_redirect(t_cmd *cmd, t_list *temp)
 {
 	if (((char *)temp->content)[0] == '>')
 		get_cmd_out_redirct(cmd, temp);

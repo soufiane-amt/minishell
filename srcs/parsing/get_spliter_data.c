@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 14:50:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/22 21:46:07 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/24 19:59:13 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ char	**get_two_separated_cmd(char *str, char sep)
 
 int	get_spliter_data(t_spliter *spliter, char *prev_cmd, char *next_cmd)
 {
-	static t_cmd	*prevCmd;
+	static t_cmd	*prevcommand;
 
 	if (!data.call_nbr)
 		spliter->Prevcmd = get_cmd_data(prev_cmd);
 	else
-		spliter->Prevcmd = prevCmd;
+		spliter->Prevcmd = prevcommand;
 	spliter->Nextcmd = get_cmd_data(next_cmd);
-	prevCmd = spliter -> Nextcmd;
+	prevcommand = spliter -> Nextcmd;
 	if (spliter ->spec_char == PIPE && !data.status.status)
 	{
 		spliter ->Prevcmd->output.fd = spliter->pipe[1];
@@ -78,8 +78,10 @@ t_spliter	*get_spliter(t_spliter *spliter)
 	while (data.input[data.l] && data.input[data.l] != '\n'
 		&& data.input[data.l] != spliter->spec_char)
 		data.l++;
-	cmd = get_two_separated_cmd(ft_substr(data.input, data.j, data.l + 1), spliter->spec_char);
-	if (!cmd || (*data.status.exit_code) || !get_spliter_data(spliter, cmd[0], cmd[1]))
+	cmd = get_two_separated_cmd(
+			ft_substr(data.input, data.j, data.l + 1), spliter->spec_char);
+	if (!cmd || (*data.status.exit_code)
+		|| !get_spliter_data(spliter, cmd[0], cmd[1]))
 	{
 		free_arr((void **)cmd);
 		data.spliter_sucess = 0;

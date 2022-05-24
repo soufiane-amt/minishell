@@ -6,13 +6,13 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 16:20:51 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/23 21:40:40 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/24 20:14:06 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void ft_exit()
+void	ft_exit(void)
 {
-    data.exit_the_program = 1;
+	data.exit_the_program = 1;
 }

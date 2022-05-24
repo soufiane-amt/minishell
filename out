@@ -1,0 +1,10 @@
+Makefile
+README.md
+includes
+install_readline.sh
+minishell
+minishell.dSYM
+note.txt
+out
+srcs
+tests
