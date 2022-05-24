@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/20 14:09:07 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/24 20:57:53 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,20 @@ static	int	go(char *str)
 	return (1);
 }
 
+char	*change_status(char *exit_msg, int code)
+{
+	chstatus(exit_msg, NULL, code);
+	return (NULL);
+}
+
 char	*_char(char *str)
 {
-	int i;
-	int j;
-	char *new_str;
-	int is_first;
-	char *_last;
+	int		i;
+	int		j;
+	char	*new_str;
+	int		is_first;
+	char	*_last;
 
-	
 	i = 0;
 	j = 0;
 	is_first = who_first(str);
@@ -98,25 +103,16 @@ char	*_char(char *str)
 	if (go(str) != -1)
 		expand_quotes(str);
 	else
-	{
-		chstatus(SYNTAX_ERROR, NULL, 30);
-		return (NULL);
-	}
+		return (change_status(SYNTAX_ERROR, 30));
 	new_str = last(str);
 	_last = ft_strdup("");
 	if (!_last)
-	{
-		chstatus(SYNTAX_ERROR, NULL, 30);
-		return (NULL);
-	}
+		return (change_status(SYNTAX_ERROR, 30));
 	if (ft_expand(&_last, new_str) < 0)
 		return (NULL);
 	if (!ft_strcmp(_last, " "))
-		_last = ft_strdup("");	
+		_last = ft_strdup("");
 	if (!_last)
-	{
-		chstatus(MEMORY_LACK, NULL, 55);
-		return (NULL);
-	}
+		return (change_status(MEMORY_LACK, 55));
 	return (_last);
 }
