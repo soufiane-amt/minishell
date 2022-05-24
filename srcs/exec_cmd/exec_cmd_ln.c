@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:39:59 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 19:27:23 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/24 21:19:36 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	exec_multiple_cmd(t_token **token)
 
 void	exec_cmd_ln(t_token **token)
 {
-	(void)token;
 	if ((*data.status.exit_code))
 		return ;
 	if (!data.input_piped)

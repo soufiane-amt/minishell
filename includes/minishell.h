@@ -179,7 +179,7 @@ void    ft_collect_data();
 void    ft_cd(t_cmd *cmd);
 void    ft_echo(t_cmd *cmd);
 void    ft_env(int is);
-void    ft_exit(t_cmd *cmd);
+void    ft_exit(void);
 void    ft_export(t_cmd *cmd);
 char    *ft_pwd();
 void    ft_unset(t_cmd *cmd);

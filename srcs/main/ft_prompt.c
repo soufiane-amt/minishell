@@ -6,14 +6,16 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 20:12:32 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/24 21:20:25 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	parse_and_execute(t_token **token)
+void	parse_and_execute(void)
 {
+	t_token	**token;
+
 	if (data.input_piped)
 	{
 		token = init_token();
@@ -22,14 +24,12 @@ void	parse_and_execute(t_token **token)
 		free_tokens(token);
 	}
 	else if (!*(data.status.exit_code))
-		exec_cmd_ln (token);
+		exec_cmd_ln (NULL);
 	add_history(data.input);
 }
 
 void	open_prompt(char **env)
 {
-	t_token	**token;
-
 	signalize();
 	get_env_while_prompt('=', env);
 	data.exit_the_program = 0;
@@ -40,7 +40,7 @@ void	open_prompt(char **env)
 			break ;
 		ft_collect_data();
 		if (!(*data.status.exit_code) && check_user_input(data.input))
-			parse_and_execute(token);
+			parse_and_execute();
 		if ((*data.status.exit_code))
 			notify_error(data.status.status, NULL);
 		free_t_data();
