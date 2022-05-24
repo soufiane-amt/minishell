@@ -71,6 +71,8 @@
 
 #define FD_ERROR "failed to open file."
 
+#define TOO_MANY_ARGS "too many arguments."
+
 //file not found error
 //Global variable
 
@@ -114,6 +116,8 @@ typedef struct s_data
 	int			spliter_sucess;
 	t_status	status;
     t_env       *enver;
+    int         error_status;
+    int         exit_the_program;
 }   t_data;
 
 

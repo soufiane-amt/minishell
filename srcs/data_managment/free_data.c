@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:56:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/22 21:46:07 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/23 23:52:01 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	free_t_data(void)
 		free_arr((void **) data.all_paths);
 	if (data.status.status)
 		free (data.status.status);
+	if (data.status.exit_code)
+		free (data.status.exit_code);
 	if (data.fds)
 		ft_lstclear (&data.fds, 0);
 }
@@ -77,6 +79,7 @@ void free_enver(void)
    while (temp)
    {
        temp2 = temp->next;
+       printf ("VARIABLE : |%s|\nVALUE : |%s|\n", temp->variable, temp->value);
        free(temp->variable);
        free(temp->value);
        temp = temp2;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_built_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:38:28 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 14:23:07 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/23 21:04:22 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	is_built_cmd(t_cmd *cmd)
 	if (!ft_strcmp(cmd->cmd, "echo"))
 		return (1);
 	else if (!ft_strcmp(cmd->cmd, "pwd"))
-		return (2);
+        return (2);
 	else if (!ft_strcmp(cmd->cmd, "unset"))
 		return (3);
 	else if (!ft_strcmp(cmd->cmd, "env"))

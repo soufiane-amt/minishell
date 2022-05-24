@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/22 21:47:35 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/23 23:25:06 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int open_prompt(char  **env)
     signal(SIGINT,ctl_c);
     signal(SIGQUIT, ctl_c);
     get_env_while_prompt('=', env);
-    while (1)
+    data.exit_the_program = 0;
+    while (1 && !data.exit_the_program)
     {
         data.input = readline("𝖒𝖎𝖓𝖎𝖘𝖍𝖊𝖑𝖑➜");
         if (!data.input)
@@ -34,16 +35,16 @@ int open_prompt(char  **env)
                 exec_cmd_ln (token);
                 free_tokens(token);
             }
-            else if (!(*data.status.exit_code))
-            {
+            else if (!*(data.status.exit_code))
                 exec_cmd_ln (token);
-            }
             add_history(data.input);
         }
-        if (data.status.status)
+        if ((*data.status.exit_code))
             notify_error(data.status.status, NULL);
         free_t_data();
+        data.error_status = *(data.status.exit_code);
     }
     free_enver();
+    while(1);
     return 0;
 }
