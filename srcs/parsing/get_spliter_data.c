@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_spliter_g_data.c                                 :+:      :+:    :+:   */
+/*   get_spliter_data.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 14:50:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 19:59:13 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:25:10 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ t_spliter	*get_spliter(t_spliter *spliter)
 		&& g_data.input[g_data.l] != spliter->spec_char)
 		g_data.l++;
 	cmd = get_two_separated_cmd(
-			ft_substr(g_data.input, g_data.j, g_data.l + 1), spliter->spec_char);
+			ft_substr(g_data.input, g_data.j, g_data.l + 1),
+			spliter->spec_char);
 	if (!cmd || (*g_data.status.exit_code)
 		|| !get_spliter_data(spliter, cmd[0], cmd[1]))
 	{

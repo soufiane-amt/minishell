@@ -6,13 +6,13 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:56:03 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:24:12 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	cmd_piped()
+int	cmd_piped(void)
 {
 	int	i;
 	int	j;
@@ -35,11 +35,12 @@ int	cmd_piped()
 			quotes_aft++;
 		j--;
 	}
-	if(quotes_aft == quotes_pre && quotes_aft == 1)
+	if (quotes_aft == quotes_pre && quotes_aft == 1)
 		return (0);
 	return (1);
 }
-int	cmd_piped2()
+
+int	cmd_piped2(void)
 {
 	int	i;
 	int	j;
@@ -62,7 +63,7 @@ int	cmd_piped2()
 			quotes_aft++;
 		j--;
 	}
-	if(quotes_aft == quotes_pre && quotes_aft == 1)
+	if (quotes_aft == quotes_pre && quotes_aft == 1)
 		return (0);
 	return (1);
 }
