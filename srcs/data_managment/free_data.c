@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:56:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 18:45:04 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 01:42:38 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ void	free_tokens(t_token **token)
 	int		last_element;
 	t_token	*to_free;
 
-	if ((*data.status.exit_code))
-		return ;
 	last_element = 0;
 	temp = *token;
 	while (temp)

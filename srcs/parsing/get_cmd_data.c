@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 19:07:02 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/23 23:05:44 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 01:42:11 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_cmd	*get_cmd_data(char *command)
 	char	*t_command;
 
 	cmd = ft_init_cmd ();
-	if (!cmd)
+	if (!cmd || *(data.status.exit_code))
 		return (cmd);
 	command = if_prenthesized(command, &t_command);
 	if (check_syntax(cmd, command) && (*data.status.exit_code))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_built.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:58:46 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 21:21:45 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/25 01:40:59 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ void	exec_built_cmd(t_cmd *cmd, int result)
 	if (result == 6)
 		ft_cd(cmd);
 	if (result == 7)
-		ft_exit(cmd);
+		ft_exit();
 }
