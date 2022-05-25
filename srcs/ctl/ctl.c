@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:15:27 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 22:37:22 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void  ctl(int sig)
 {
+	if (g_data.is_running)
+		return ;
 	if (sig == SIGINT)
 	{
 		printf("\r");
@@ -23,15 +25,18 @@ void  ctl(int sig)
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
-		(*g_data.status.exit_code) = 128 + sig;
+		// (*g_data.status.exit_code) = 128 + sig;
 	}
-	if (sig == SIGQUIT)
-		return ;
-	(*g_data.status.exit_code) = 0;
 }
 
 void	signalize(void)
 {
 	signal(SIGINT, ctl);
-	signal(SIGQUIT, ctl);
+	signal(SIGQUIT, SIG_IGN);
+}
+
+void	sigrestore(void)
+{
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
 }

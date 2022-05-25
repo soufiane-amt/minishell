@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 19:07:02 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/25 20:31:05 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 22:56:05 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,6 @@ void	get_cmd(t_cmd *cmd)
 	cmd->cmd = ft_strdup(cmd->ex_elements->content);
 	if (!cmd->cmd)
 		chstatus(MEMORY_LACK, NULL, 30);
-}
-
-void	get_cmd_redirects(t_cmd *cmd)
-{
-	t_list	*temp;
-
-	temp = cmd->ex_elements;
-	while (temp && temp->next)
-	{
-		get_cmd_redirect(cmd, temp);
-		temp = temp ->next;
-	}
 }
 
 void	get_cmd_args(t_cmd *cmd)
@@ -89,7 +77,6 @@ t_cmd	*get_cmd_data(char *command)
 		return (cmd);
 	}
 	get_cmd(cmd);
-	get_cmd_redirects(cmd);
 	get_cmd_args(cmd);
 	build_cmd (cmd);
 	if (!get_f_cmd(cmd, t_command))

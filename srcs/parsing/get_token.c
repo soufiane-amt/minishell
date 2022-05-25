@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 19:28:28 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 20:04:10 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 21:55:04 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_get_token(t_token **token)
 
 	if ((*g_data.status.exit_code) || !token)
 		return ;
-	f_sep = ft_split_by_sep(g_data);
+	f_sep = ft_split_by_sep();
 	if ((*g_data.status.exit_code))
 	{
 		ft_token_add_back(token, ft_token_new(f_sep));
@@ -27,7 +27,7 @@ void	ft_get_token(t_token **token)
 	while (f_sep)
 	{
 		ft_token_add_back(token, ft_token_new(f_sep));
-		f_sep = ft_split_by_sep(g_data);
+		f_sep = ft_split_by_sep();
 		if (!g_data.spliter_sucess)
 		{
 			ft_token_add_back(token, ft_token_new(f_sep));

@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:01:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 22:47:28 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,10 @@ void	get_env_while_prompt(char c, char **env)
 				ft_env_tadd_back(&(g_data.enver), ft_env_new(var, val));
 		}
 		else
+		{
+			chstatus(MEMORY_LACK, NULL, 30);
 			return ;
+		}
 		i++;
 	}
 }
