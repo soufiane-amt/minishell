@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _char.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/24 20:57:53 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/25 21:48:35 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,10 @@ char	*_char(char *str)
 	if (go(str) != -1)
 		expand_quotes(str);
 	else
-		return (change_status(SYNTAX_ERROR, 30));
+	{
+		change_status(SYNTAX_ERROR, 30);
+		return (ft_strdup(""));
+	}
 	new_str = last(str);
 	_last = ft_strdup("");
 	if (!_last)
