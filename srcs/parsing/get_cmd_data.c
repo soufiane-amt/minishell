@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd_g_data.c                                     :+:      :+:    :+:   */
+/*   get_cmd_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 19:07:02 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/25 19:56:49 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:31:05 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,5 @@ t_cmd	*get_cmd_data(char *command)
 	if (!get_f_cmd(cmd, t_command))
 		return (NULL);
 	add_path(cmd, t_command);
-	
 	return (cmd);
 }

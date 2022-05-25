@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   collect_g_data.c                                     :+:      :+:    :+:   */
+/*   collect_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:18:24 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 19:24:25 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:30:17 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void	generate_paths(void)
 	join_back_slash();
 }
 
-void	ft_collect_data(char **env)
+void	ft_collect_data(void)
 {
 	int		i;
 	char	*f_str;
 
-	ft_init_t_data (env);
+	ft_init_t_data();
 	f_str = g_data.input;
 	g_data.input = ft_strtrim(g_data.input, " ");
 	if (!g_data.input)
@@ -67,7 +67,7 @@ void	ft_collect_data(char **env)
 	while (g_data.input[i])
 	{
 		if (!cmd_piped() || !cmd_piped2())
-			break;
+			break ;
 		if (g_data.input[i] == '|')
 			g_data.input_piped = TRUE;
 		i++;
