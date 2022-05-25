@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 23:40:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 19:43:17 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_cmd	*ft_init_cmd(void)
 	cmd ->heredoc_delimits = NULL;
 	cmd ->cmd_str = NULL;
 	cmd ->f_cmd = NULL;
-	data.e = 0;
+	g_data.e = 0;
 	cmd->input.mode = 0;
 	cmd->output.mode = 0;
 	cmd->input.fd = STDIN_FILENO;

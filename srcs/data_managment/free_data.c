@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_data.c                                        :+:      :+:    :+:   */
+/*   free_g_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,16 +15,16 @@
 void	free_t_data(void)
 {
 	unlink(".temp");
-	if (data.input)
-		free(data.input);
-	if (data.all_paths)
-		free_arr((void **) data.all_paths);
-	if (data.status.status)
-		free (data.status.status);
-	if (data.status.exit_code)
-		free (data.status.exit_code);
-	if (data.fds)
-		ft_lstclear (&data.fds, 0);
+	if (g_data.input)
+		free(g_data.input);
+	if (g_data.all_paths)
+		free_arr((void **) g_data.all_paths);
+	if (g_data.status.status)
+		free (g_data.status.status);
+	if (g_data.status.exit_code)
+		free (g_data.status.exit_code);
+	if (g_data.fds)
+		ft_lstclear (&g_data.fds, 0);
 }
 
 void	free_cmd(t_cmd *cmd)
@@ -56,10 +56,10 @@ void	free_cmd(t_cmd *cmd)
 
 void	free_spliter(t_spliter *spliter, int last_token)
 {
-	if (spliter ->Prevcmd)
-		free_cmd(spliter ->Prevcmd);
-	if (last_token && spliter->Nextcmd)
-		free_cmd(spliter->Nextcmd);
+	if (spliter ->prev_cmd)
+		free_cmd(spliter ->prev_cmd);
+	if (last_token && spliter->next_cmd)
+		free_cmd(spliter->next_cmd);
 	free(spliter);
 	spliter = NULL;
 }
@@ -69,7 +69,7 @@ void	free_enver(void)
 	t_env	*temp;
 	t_env	*temp2;
 
-	temp = data.enver;
+	temp = g_data.enver;
 	while (temp)
 	{
 		temp2 = temp->next;

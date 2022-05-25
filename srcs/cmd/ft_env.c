@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 22:08:51 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/18 14:24:18 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_env(int is)
 {
 	t_env	*e;
 
-	e = data.enver;
+	e = g_data.enver;
 	while (e)
 	{
 		if (is == 1 && ft_strcmp(e->value, ""))

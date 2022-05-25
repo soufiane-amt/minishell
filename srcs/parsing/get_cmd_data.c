@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd_data.c                                     :+:      :+:    :+:   */
+/*   get_cmd_g_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -79,10 +79,10 @@ t_cmd	*get_cmd_data(char *command)
 	char	*t_command;
 
 	cmd = ft_init_cmd ();
-	if (!cmd || *(data.status.exit_code))
+	if (!cmd || *(g_data.status.exit_code))
 		return (cmd);
 	command = if_prenthesized(command, &t_command);
-	if (check_syntax(cmd, command) && (*data.status.exit_code))
+	if (check_syntax(cmd, command) && (*g_data.status.exit_code))
 	{
 		if (t_command)
 			free(t_command);

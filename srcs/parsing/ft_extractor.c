@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 02:13:21 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 19:53:17 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	is_delimter(char c, char *delimter)
 
 int	ft_add_extracted_element(t_cmd *cmd, char *s)
 {
-	if (!(*data.status.exit_code) && s[0] && ft_strcmp (s, ""))
+	if (!(*g_data.status.exit_code) && s[0] && ft_strcmp (s, ""))
 	{
 		ft_lstadd_back(&cmd->ex_elements, ft_lstnew((char *)s, CHAR));
-		if ((*data.status.exit_code))
+		if ((*g_data.status.exit_code))
 			return (0);
 	}
 	else
@@ -56,10 +56,10 @@ int	extract_norm(t_cmd *cmd, char *str, int *i)
 		chstatus (MEMORY_LACK, NULL, 30);
 	while (ft_ispace(str[*i]))
 		(*i)++;
-	if (!(*data.status.exit_code) && s[0] && ft_strcmp (s, ""))
+	if (!(*g_data.status.exit_code) && s[0] && ft_strcmp (s, ""))
 	{
 		ft_lstadd_back(&cmd->ex_elements, ft_lstnew((char *)s, CHAR));
-		if ((*data.status.exit_code))
+		if ((*g_data.status.exit_code))
 			return (0);
 	}
 	else
@@ -84,10 +84,10 @@ int	extract_quote(t_cmd *cmd, char	*str, int *i)
 	s = ft_substr(str, start, *i - start);
 	if (!s)
 		chstatus (MEMORY_LACK, NULL, 30);
-	if (!(*data.status.exit_code) && s[0] && ft_strcmp (s, ""))
+	if (!(*g_data.status.exit_code) && s[0] && ft_strcmp (s, ""))
 	{
 		ft_lstadd_back(&cmd->ex_elements, ft_lstnew((char *)s, CHAR));
-		if ((*data.status.exit_code))
+		if ((*g_data.status.exit_code))
 			return (0);
 	}
 	else

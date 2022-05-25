@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:01:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/23 23:33:58 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*get_env(char *var)
 {
 	t_env	*e;
 
-	e = data.enver;
+	e = g_data.enver;
 	while (e)
 	{
 		if (!ft_strcmp(e->variable, var))
@@ -61,18 +61,18 @@ void	get_env_while_prompt(char c, char **env)
 	char	*val;
 
 	i = 0;
-	data.env = env;
-	while (data.env[i])
+	g_data.env = env;
+	while (g_data.env[i])
 	{
-		var = malloc(size_var_val(data.env[i], 1, c) + 1);
-		val = malloc(size_var_val(data.env[i], 0, c) + 1);
+		var = malloc(size_var_val(g_data.env[i], 1, c) + 1);
+		val = malloc(size_var_val(g_data.env[i], 0, c) + 1);
 		if (var && val)
 		{
-			cpy_var_val(data.env[i], var, val, '=');
+			cpy_var_val(g_data.env[i], var, val, '=');
 			if (i == 0)
-				data.enver = ft_env_new(var, val);
+				g_data.enver = ft_env_new(var, val);
 			else
-				ft_env_tadd_back(&(data.enver), ft_env_new(var, val));
+				ft_env_tadd_back(&(g_data.enver), ft_env_new(var, val));
 		}
 		else
 			return ;

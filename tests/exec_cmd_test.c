@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 15:19:40 by samajat           #+#    #+#             */
-/*   Updated: 2022/04/25 02:07:16 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,14 +242,14 @@ void	generate_paths(char **env)
 	int		i;
 	char	*str;
 
-	data.path = extract_paths (env);
-	data.all_paths = ft_split (data.path, ':');
-	free(data.path);
+	g_data.path = extract_paths (env);
+	g_data.all_paths = ft_split (g_data.path, ':');
+	free(g_data.path);
 	i = 1;
-	while (data.all_paths[++i])
+	while (g_data.all_paths[++i])
 	{
-		str = data.all_paths[i];
-		data.all_paths[i] = ft_strjoin (str, "/");
+		str = g_data.all_paths[i];
+		g_data.all_paths[i] = ft_strjoin (str, "/");
 		free(str);
 	}
 }
@@ -259,11 +259,11 @@ void	exec_cmd(char *command, char **env)
 
     generate_paths(data, env);
 	i = 0;
-	data. cmd = ft_split (command, ' ');
-	while (data.all_paths[i])
+	g_data. cmd = ft_split (command, ' ');
+	while (g_data.all_paths[i])
 	{
-		data.mypath = ft_strjoin (data.all_paths[i], data.cmd[0]);
-		execve (data.mypath, data.cmd, data.env);
+		g_data.mypath = ft_strjoin (g_data.all_paths[i], g_data.cmd[0]);
+		execve (g_data.mypath, g_data.cmd, g_data.env);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:10:00 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 19:10:02 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 
 int	file_is_executable(t_cmd *cmd, char *command)
 {
-	if (!access(data.mypath, X_OK))
+	if (!access(g_data.mypath, X_OK))
 	{
-		cmd->f_cmd[0] = data.mypath;
+		cmd->f_cmd[0] = g_data.mypath;
 		free (command);
 		return (0);
 	}
 	else
 	{
 		notify_error(PERMISSION_DENIED, cmd->cmd);
-		((*data.status.exit_code)) = 126;
+		((*g_data.status.exit_code)) = 126;
 		free (command);
 		return (0);
 	}
@@ -37,20 +37,20 @@ int	test_paths(t_cmd *cmd)
 	char	*command;
 
 	i = 0;
-	while (data.all_paths[i])
+	while (g_data.all_paths[i])
 	{
 		command = cmd->f_cmd[0];
-		data.mypath = ft_strjoin (data.all_paths[i], command);
-		if (!data.mypath)
+		g_data.mypath = ft_strjoin (g_data.all_paths[i], command);
+		if (!g_data.mypath)
 		{
 			chstatus(MEMORY_LACK, NULL, 30);
 			return (0);
 		}
-		if (!access(data.mypath, F_OK))
+		if (!access(g_data.mypath, F_OK))
 			if (!file_is_executable(cmd, command))
 				return (0);
-		free(data.mypath);
-		data.mypath = NULL;
+		free(g_data.mypath);
+		g_data.mypath = NULL;
 		i++;
 	}
 	return (1);
@@ -71,13 +71,13 @@ int	add_path(t_cmd *cmd, char *t_command)
 		else
 		{
 			notify_error(PERMISSION_DENIED, cmd->cmd);
-			((*data.status.exit_code)) = 126;
+			((*g_data.status.exit_code)) = 126;
 			return (1);
 		}
 	}
 	if (!test_paths(cmd))
 		return (0);
 	notify_error(CMD_NOT_FOUND, cmd->cmd);
-	((*data.status.exit_code)) = 127;
+	((*g_data.status.exit_code)) = 127;
 	return (0);
 }

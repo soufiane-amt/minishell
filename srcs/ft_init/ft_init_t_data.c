@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_t_data.c                                   :+:      :+:    :+:   */
+/*   ft_init_t_g_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,25 +14,25 @@
 
 void	ft_init_t_data(void)
 {
-	data.status.status = NULL;
-	data.status.exit_code = malloc (sizeof(int));
-	if (!data.status.exit_code)
+	g_data.status.status = NULL;
+	g_data.status.exit_code = malloc (sizeof(int));
+	if (!g_data.status.exit_code)
 	{
-		if (data.input)
-			free (data.input);
+		if (g_data.input)
+			free (g_data.input);
 		exit(30);
 	}
-	*(data.status.exit_code) = 0;
-	data.input_piped = FALSE;
-	data.i = 0;
-	data.j = 0;
-	data.l = 0;
-	data.e = 0;
-	data.c = 0;
-	data.call_nbr = 0;
-	data.process_nbr = 1;
-	data.all_paths = NULL;
-	data.mypath = NULL;
-	data.fds = NULL;
-	data.spliter_sucess = 1;
+	*(g_data.status.exit_code) = 0;
+	g_data.input_piped = FALSE;
+	g_data.i = 0;
+	g_data.j = 0;
+	g_data.l = 0;
+	g_data.e = 0;
+	g_data.c = 0;
+	g_data.call_nbr = 0;
+	g_data.process_nbr = 1;
+	g_data.all_paths = NULL;
+	g_data.mypath = NULL;
+	g_data.fds = NULL;
+	g_data.spliter_sucess = 1;
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   collect_data.c                                     :+:      :+:    :+:   */
+/*   collect_g_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,11 +18,11 @@ void	join_back_slash(void)
 	int		i;
 
 	i = -1;
-	while (data.all_paths[++i])
+	while (g_data.all_paths[++i])
 	{
-		str = data.all_paths[i];
-		data.all_paths[i] = ft_strjoin (str, "/");
-		if (!data.all_paths[i])
+		str = g_data.all_paths[i];
+		g_data.all_paths[i] = ft_strjoin (str, "/");
+		if (!g_data.all_paths[i])
 		{
 			chstatus(MEMORY_LACK, NULL, 30);
 			return ;
@@ -33,15 +33,15 @@ void	join_back_slash(void)
 
 void	generate_paths(void)
 {
-	data.path = getenv("PATH");
-	if (!data.path)
+	g_data.path = getenv("PATH");
+	if (!g_data.path)
 	{
 		notify_error (CMD_NOT_FOUND, NULL);
 		chstatus("  ", NULL, 127);
 		return ;
 	}
-	data.all_paths = ft_split (data.path, ':');
-	if (!data.all_paths)
+	g_data.all_paths = ft_split (g_data.path, ':');
+	if (!g_data.all_paths)
 	{
 		chstatus(MEMORY_LACK, NULL, 30);
 		return ;
@@ -55,24 +55,24 @@ void	ft_collect_data(char **env)
 	char	*f_str;
 
 	ft_init_t_data (env);
-	f_str = data.input;
-	data.input = ft_strtrim(data.input, " ");
-	if (!data.input)
+	f_str = g_data.input;
+	g_data.input = ft_strtrim(g_data.input, " ");
+	if (!g_data.input)
 	{
 		chstatus(MEMORY_LACK, NULL, 30);
 		return ;
 	}
 	i = 0;
 	free(f_str);
-	while (data.input[i])
+	while (g_data.input[i])
 	{
 		if (!cmd_piped() || !cmd_piped2())
 			break;
-		if (data.input[i] == '|')
-			data.input_piped = TRUE;
+		if (g_data.input[i] == '|')
+			g_data.input_piped = TRUE;
 		i++;
 	}
 	generate_paths();
-	if ((*data.status.exit_code))
+	if ((*g_data.status.exit_code))
 		return ;
 }

@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 22:22:58 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/22 21:46:07 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	handle_single_redir(t_cmd *cmd, t_list *temp, int old_fd)
 		return (0);
 	}
 	close_ancient_fd(old_fd);
-	ft_lstadd_back(&data.fds, ft_lstnew(&cmd->input.fd, INT));
+	ft_lstadd_back(&g_data.fds, ft_lstnew(&cmd->input.fd, INT));
 	return (1);
 }
 
@@ -37,13 +37,13 @@ void	open_redir_files_in(t_cmd *cmd)
 	int		old_fd;
 
 	temp = cmd->in_redirect_f;
-	if (data.input_piped)
-		data.c++;
-	while (temp && !((*data.status.exit_code)))
+	if (g_data.input_piped)
+		g_data.c++;
+	while (temp && !((*g_data.status.exit_code)))
 	{
 		old_fd = cmd->input.fd;
 		if (ft_lst_contain(&cmd->heredoc_delimits, (char *)temp->content)
-			&& (data.c == 1 || data.c % 2 == 0))
+			&& (g_data.c == 1 || g_data.c % 2 == 0))
 			ft_open_heredoc(cmd, (char *)temp->content);
 		else if (!ft_lst_contain(&cmd->heredoc_delimits, (char *)temp->content))
 			handle_single_redir(cmd, temp, old_fd);
@@ -56,7 +56,7 @@ void	open_redir_files_ou(t_cmd *cmd)
 	t_list	*temp;
 	int		old_fd;
 
-	if ((*data.status.exit_code))
+	if ((*g_data.status.exit_code))
 		return ;
 	temp = cmd->out_redirect_f;
 	while (temp)
@@ -70,7 +70,7 @@ void	open_redir_files_ou(t_cmd *cmd)
 			return ;
 		}
 		close_ancient_fd(old_fd);
-		ft_lstadd_back(&data.fds, ft_lstnew(&cmd->output.fd, INT));
+		ft_lstadd_back(&g_data.fds, ft_lstnew(&cmd->output.fd, INT));
 		temp = temp ->next;
 	}
 }

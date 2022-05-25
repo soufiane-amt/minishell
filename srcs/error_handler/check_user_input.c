@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 18:56:03 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 19:24:11 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ int	cmd_piped()
 	int	quotes_aft;
 
 	i = 0;
-	j = ft_strlen(data.input) - 1;
+	j = ft_strlen(g_data.input) - 1;
 	quotes_pre = 0;
 	quotes_aft = 0;
-	while (data.input[i] && data.input[i] != '|')
+	while (g_data.input[i] && g_data.input[i] != '|')
 	{
-		if (data.input[i] == '\'')
+		if (g_data.input[i] == '\'')
 			quotes_pre++;
 		i++;
 	}
-	while (j >= 0 && data.input[j] != '|')
+	while (j >= 0 && g_data.input[j] != '|')
 	{
-		if (data.input[j] == '\'')
+		if (g_data.input[j] == '\'')
 			quotes_aft++;
 		j--;
 	}
@@ -47,18 +47,18 @@ int	cmd_piped2()
 	int	quotes_aft;
 
 	i = 0;
-	j = ft_strlen(data.input) - 1;
+	j = ft_strlen(g_data.input) - 1;
 	quotes_pre = 0;
 	quotes_aft = 0;
-	while (data.input[i] && data.input[i] != '|')
+	while (g_data.input[i] && g_data.input[i] != '|')
 	{
-		if (data.input[i] == '\"')
+		if (g_data.input[i] == '\"')
 			quotes_pre++;
 		i++;
 	}
-	while (j >= 0 && data.input[j] != '|')
+	while (j >= 0 && g_data.input[j] != '|')
 	{
-		if (data.input[j] == '\"')
+		if (g_data.input[j] == '\"')
 			quotes_aft++;
 		j--;
 	}
@@ -69,7 +69,7 @@ int	cmd_piped2()
 
 int	check_user_input(char *str)
 {
-	if ((*data.status.exit_code))
+	if ((*g_data.status.exit_code))
 		return (0);
 	if (!(str) || !ft_strcmp(str, ""))
 		return (0);

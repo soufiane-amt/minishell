@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 19:17:01 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,38 @@ void	parse_and_execute(void)
 {
 	t_token	**token;
 
-	if (data.input_piped)
+	if (g_data.input_piped)
 	{
 		token = init_token();
 		ft_get_token(token);
 		exec_cmd_ln (token);
 		free_tokens(token);
 	}
-	else if (!*(data.status.exit_code))
+	else if (!*(g_data.status.exit_code))
 		exec_cmd_ln (NULL);
-	add_history(data.input);
+	add_history(g_data.input);
 }
 
 void	open_prompt(char **env)
 {
 	signalize();
 	get_env_while_prompt('=', env);
-	data.exit_the_program = 0;
-	while (!data.exit_the_program)
+	g_data.exit_the_program = 0;
+	while (!g_data.exit_the_program)
 	{
-		data.input = readline("𝖒𝖎𝖓𝖎𝖘𝖍𝖊𝖑𝖑➜");
-		if (!data.input)
+		g_data.input = readline("𝖒𝖎𝖓𝖎𝖘𝖍𝖊𝖑𝖑➜");
+		if (!g_data.input)
 		{
 			printf("exit\n");
 			break ;
 		}
 		ft_collect_data();
-		if (!(*data.status.exit_code) && check_user_input(data.input))
+		if (!(*g_data.status.exit_code) && check_user_input(g_data.input))
 			parse_and_execute();
-		if ((*data.status.exit_code))
-			notify_error(data.status.status, NULL);
+		if ((*g_data.status.exit_code))
+			notify_error(g_data.status.status, NULL);
 		free_t_data();
-		data.error_status = *(data.status.exit_code);
+		g_data.error_status = *(g_data.status.exit_code);
 	}
 	free_enver();
 }

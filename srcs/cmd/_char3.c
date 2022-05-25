@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:35:20 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/23 20:54:01 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	get_value_from_enver(char **st, char *var)
 	if (!ft_strcmp(var, "?"))
 	{
 		forfree = *st;
-		ffree = ft_itoa(data.error_status);
+		ffree = ft_itoa(g_data.error_status);
 		*st = ft_strjoin(*st, ffree);
 		free(forfree);
 		free(ffree);

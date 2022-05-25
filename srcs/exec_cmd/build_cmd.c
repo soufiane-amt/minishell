@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:41:21 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 19:55:12 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	add_comp(t_cmd *cmd, t_list *temp)
 			return ;
 		}
 		add_space(&cmd->cmd_str);
-		if ((*data.status.exit_code))
+		if ((*g_data.status.exit_code))
 			return ;
 		free(f_str);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:02:55 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 16:45:46 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	new_oldpwd()
 {
 	t_env	*e;
 
-	e = data.enver;
+	e = g_data.enver;
 	while (e)
 	{
 		if (!ft_strcmp(e->variable, "OLDPWD"))
@@ -37,7 +37,7 @@ void	set_newpwd()
 {
 	t_env	*e;
 
-	e = data.enver;
+	e = g_data.enver;
 	while (e)
 	{
 		if (!ft_strcmp(e->variable, "PWD"))

@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:13:23 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 19:44:28 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	close_fd(t_cmd *cmd, int close_all)
 	}
 	else
 	{
-		temp = data.fds;
+		temp = g_data.fds;
 		while (temp)
 		{
 			if (*((int *)temp->content) > 2)
@@ -37,17 +37,17 @@ void	close_fd(t_cmd *cmd, int close_all)
 
 void	exec_cmd_in_child_process(t_cmd *cmd, int cmd_type)
 {
-	// (*data.status.exit_code) = 0;
+	// (*g_data.status.exit_code) = 0;
 	if (cmd->input.fd != STDIN_FILENO)
 		dup2 (cmd->input.fd, STDIN_FILENO);
 	if (cmd->output.fd != STDOUT_FILENO)
 		dup2 (cmd->output.fd, STDOUT_FILENO);
 	close_fd(cmd, 1);
 	if (!cmd_type)
-		execve (cmd->f_cmd[0], cmd->f_cmd, data.env);
+		execve (cmd->f_cmd[0], cmd->f_cmd, g_data.env);
 	else
 		exec_built_cmd(cmd, cmd_type);
-	((*data.status.exit_code)) = 1;
+	((*g_data.status.exit_code)) = 1;
 	exit(1);
 }
 
@@ -67,7 +67,7 @@ void	exec_cmd(t_cmd *cmd)
 		exec_cmd_in_child_process(cmd, cmd_type);
 	if (!id)
 		exit(1);
-	if (cmd_type >= 3 && !data.input_piped)
+	if (cmd_type >= 3 && !g_data.input_piped)
 		exec_built_cmd(cmd, cmd_type);
 	close_fd(cmd, 0);
 }
