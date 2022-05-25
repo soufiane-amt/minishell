@@ -290,11 +290,12 @@ void    chstatus (char *exit_message, char *cmd, int   exit_code);
 void    notify_error (char  *message, char  *cmd);
 int     check_syntax (t_cmd *cmd, char    *command);
 int     check_prenthesis (char    *str);
-char     *if_prenthesized (char *str, char  **t_str);
+char    *if_prenthesized (char *str, char  **t_str);
 int     input_redirection_is_valid (char    *cmd);
 int     output_redirection_is_valid (char    *cmd);
 int     check_user_input (char  *str);
-
+int		cmd_piped();
+int		cmd_piped2();
 //init
 t_cmd   *ft_init_cmd();
 t_token     **init_token();

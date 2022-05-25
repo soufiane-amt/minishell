@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 21:20:25 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 19:17:01 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ void	open_prompt(char **env)
 	{
 		data.input = readline("𝖒𝖎𝖓𝖎𝖘𝖍𝖊𝖑𝖑➜");
 		if (!data.input)
+		{
+			printf("exit\n");
 			break ;
+		}
 		ft_collect_data();
 		if (!(*data.status.exit_code) && check_user_input(data.input))
 			parse_and_execute();

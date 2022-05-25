@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:18:24 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/23 22:15:08 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/25 19:24:25 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	ft_collect_data(char **env)
 	free(f_str);
 	while (data.input[i])
 	{
+		if (!cmd_piped() || !cmd_piped2())
+			break;
 		if (data.input[i] == '|')
 			data.input_piped = TRUE;
 		i++;
