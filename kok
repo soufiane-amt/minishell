@@ -1,0 +1,44 @@
+total 232
+drwxr-xr-x  17 samajat  candidate    578 May 26 01:07 .
+drwxr-xr-x  14 samajat  candidate    476 May 25 18:50 ..
+-rw-r--r--   1 samajat  candidate   6148 May 25 18:09 .DS_Store
+drwxr-xr-x  13 samajat  candidate    442 May 25 23:43 .git
+-rwxr-xr-x   1 samajat  candidate   2451 May 25 18:09 Makefile
+-rw-r--r--   1 samajat  candidate    289 May 25 18:09 README.md
+-rw-r--r--   1 samajat  candidate      8 May 26 00:43 f
+-rw-r--r--   1 samajat  candidate      1 May 25 23:35 hh
+drwxr-xr-x   3 samajat  candidate    102 May 25 18:09 includes
+-rw-r--r--   1 samajat  candidate     65 May 25 18:09 install_readline.sh
+-rw-r--r--   1 samajat  candidate      0 May 26 01:07 kok
+-rw-r--r--   1 samajat  candidate      1 May 26 00:21 lkg
+-rwxr-xr-x   1 samajat  candidate  74300 May 26 01:06 minishell
+-rwxr-xr-x   1 samajat  candidate   1904 May 25 19:35 note.txt
+-rw-r--r--   1 samajat  candidate      0 May 25 22:56 out
+-rw-r--r--   1 samajat  candidate     90 May 26 00:21 popopofgop
+drwxr-xr-x  13 samajat  candidate    442 May 25 18:09 srcs
+Makefile
+README.md
+f
+hh
+includes
+install_readline.sh
+kok
+lkg
+minishell
+note.txt
+out
+popopofgop
+srcs
+Makefile
+README.md
+f
+hh
+includes
+install_readline.sh
+kok
+lkg
+minishell
+note.txt
+out
+popopofgop
+srcs

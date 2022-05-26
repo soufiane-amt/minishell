@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 22:54:45 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 00:36:51 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,7 @@ int				ft_is_quote(char c);
 int				ft_ispace(char c);
 int				ft_is_redirection(char *str);
 char			*ft_itoa(int n);
+int				ft_is_redi_str(char* s);
 
 //_char
 char			*_char(char *str);

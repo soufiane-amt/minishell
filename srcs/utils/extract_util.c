@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   extract_util.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 17:19:19 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 14:55:57 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/26 00:36:18 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
 
 int	ft_is_quote(char c)
 {
@@ -24,6 +25,22 @@ int	ft_is_redi(char c)
 	if (c == '>' || c == '<')
 		return (1);
 	return (0);
+}
+
+int	ft_is_redi_str(char* s)
+{
+	int	i;
+
+	i = 0;
+	if (ft_strlen(s) > 2)
+		return (0);
+	while (s[i])
+	{
+		if (!ft_is_redi(s[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	ft_is_redirection(char *str)

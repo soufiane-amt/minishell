@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 15:11:23 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 23:34:36 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 00:50:35 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,6 @@ int	redirections_are_valid(t_cmd *cmd, char *command)
 			return (0);
 		}
 		temp = temp->next;
-	}
-	if (ft_is_redi(((char *)temp->content)[0]))
-	{
-		chstatus (SYNTAX_ERROR, "'newline'", 258);
-		return (0);
 	}
 	return (1);
 }

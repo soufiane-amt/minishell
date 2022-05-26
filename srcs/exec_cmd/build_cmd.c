@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:41:21 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 23:39:16 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 01:27:05 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ void	add_comp(t_cmd *cmd, t_list *temp)
 {
 	char	*f_str;
 
-	if (!ft_is_redi((((char *)temp ->content)[0])) &&
-		!ft_lst_contain (&cmd->out_redirect_f, (char *)temp ->content) &&
-		!ft_lst_contain (&cmd->in_redirect_f, (char *)temp ->content))
+	if ((!ft_is_redi((((char *)temp ->content)[0]))
+		&& !ft_lst_contain (&cmd->out_redirect_f, (char *)temp ->content)
+		&& !ft_lst_contain (&cmd->heredoc_delimits, (char *)temp ->content))
+		|| (ft_is_redi_str(temp ->content) && !temp->next
+		&& !ft_lst_contain (&cmd->out_redirect_f, (char *)temp ->content)
+		&& !ft_lst_contain (&cmd->heredoc_delimits, (char *)temp ->content)))
 	{
 	f_str = cmd->cmd_str;
 	cmd->cmd_str = ft_strjoin (cmd->cmd_str, (char *)temp ->content);

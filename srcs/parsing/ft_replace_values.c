@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:34:51 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 21:51:40 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 00:54:35 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	ft_replace_with_acctual_values(t_cmd *cmd)
 	void	*to_free;
 
 	temp = cmd->ex_elements;
+	if (ft_is_redi_str(ft_lstlast(temp)->content))
+	{
+		chstatus (SYNTAX_ERROR, "'newline'", 258);
+		return ;
+	}
 	while (temp)
 	{
 		to_free = temp->content;
