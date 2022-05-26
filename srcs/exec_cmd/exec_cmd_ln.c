@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:39:59 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 20:07:19 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 01:52:46 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,5 @@ void	exec_cmd_ln(t_token **token)
 		exec_one_cmd();
 	else
 		exec_multiple_cmd(token);
+	g_data.is_running = 1;
 }

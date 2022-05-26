@@ -6,16 +6,19 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:15:27 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/25 22:37:22 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 01:52:39 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void  ctl(int sig)
+void	ctl(int sig)
 {
 	if (g_data.is_running)
+	{
+		g_data.is_running = 0;
 		return ;
+	}
 	if (sig == SIGINT)
 	{
 		printf("\r");
@@ -25,7 +28,7 @@ void  ctl(int sig)
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
-		// (*g_data.status.exit_code) = 128 + sig;
+		(*g_data.status.exit_code) = 128 + sig;
 	}
 }
 

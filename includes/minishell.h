@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/26 00:36:51 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 01:35:10 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -306,6 +306,6 @@ int				extract_norm(t_cmd *cmd, char *str, int *i);
 int				ft_add_extracted_element(t_cmd *cmd, char *s);
 int				is_delimter(char c, char *delimter);
 
-void	sigrestore(void);
+void			sigrestore(void);
 
 #endif
