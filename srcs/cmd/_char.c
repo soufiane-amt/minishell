@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _char.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/25 21:48:35 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 19:21:47 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,10 @@ char	*change_status(char *exit_msg, int code)
 
 char	*_char(char *str)
 {
-	int		i;
-	int		j;
 	char	*new_str;
 	int		is_first;
 	char	*_last;
 
-	i = 0;
-	j = 0;
 	is_first = who_first(str);
 	new_str = NULL;
 	if (go(str) != -1)

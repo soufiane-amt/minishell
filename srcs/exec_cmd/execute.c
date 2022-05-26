@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:13:23 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/26 01:48:41 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 19:36:33 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	close_fd(t_cmd *cmd, int close_all)
 
 void	exec_cmd_in_child_process(t_cmd *cmd, int cmd_type)
 {
-	// (*g_data.status.exit_code) = 0;
 	if (cmd->input.fd != STDIN_FILENO)
 		dup2 (cmd->input.fd, STDIN_FILENO);
 	if (cmd->output.fd != STDOUT_FILENO)
@@ -67,7 +66,6 @@ void	exec_cmd(t_cmd *cmd)
 	if (id == 0 && cmd_type < 3)
 	{
 		g_data.is_running = 1;
-		sigrestore();
 		exec_cmd_in_child_process(cmd, cmd_type);
 	}
 	if (!id)

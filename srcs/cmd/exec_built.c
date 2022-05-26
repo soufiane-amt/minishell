@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_built.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:58:46 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 01:40:59 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 19:24:18 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	exec_built_cmd(t_cmd *cmd, int result)
 	{
 		if (ft_lstsize(cmd->args) != 0)
 			notify_error(TOO_MANY_ARGS, NULL);
-		else   
+		else
 			printf("%s\n", ft_pwd());
 	}
 	if (result == 3)

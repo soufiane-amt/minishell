@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:56:43 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 20:32:48 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 20:39:28 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	free_t_data(void)
 		free_arr((void **) g_data.all_paths);
 	if (g_data.status.status)
 		free (g_data.status.status);
-	if (g_data.status.exit_code)
-		free (g_data.status.exit_code);
 	if (g_data.fds)
 		ft_lstclear (&g_data.fds, 0);
 }
@@ -73,10 +71,13 @@ void	free_enver(void)
 	while (temp)
 	{
 		temp2 = temp->next;
+		printf("About to free variable : %s Value : %s\n", temp->variable, temp->value);
 		free(temp->variable);
 		free(temp->value);
 		temp = temp2;
 	}
+	if (g_data.status.exit_code)
+		free (g_data.status.exit_code);
 }
 
 void	free_tokens(t_token **token)

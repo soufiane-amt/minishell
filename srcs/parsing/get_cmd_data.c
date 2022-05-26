@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 19:07:02 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/26 01:55:26 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 20:22:36 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ void	get_cmd_args(t_cmd *cmd)
 	temp = cmd->ex_elements->next;
 	while (temp)
 	{
-		if (!ft_is_redi_str(((char *)temp ->content)) || (!temp->next && ft_is_redi_str(((char *)temp ->content)) && !ft_lst_contain (&cmd->heredoc_delimits, (char *)temp ->content)))
+		if (!ft_is_redi_str(((char *)temp ->content)) || (!temp->next
+				&& ft_is_redi_str(((char *)temp ->content))
+				&& !ft_lst_contain(&cmd->heredoc_delimits,
+					(char *)temp ->content)))
 		{
 			arg = ft_strdup((char *)temp->content);
 			if (!arg)

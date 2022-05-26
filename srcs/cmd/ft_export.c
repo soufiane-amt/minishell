@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:03:40 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 19:28:50 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int is_exist(char *var, char *val)
+int	is_exist(char *var, char *val)
 {
-	t_env *temp;
+	t_env	*temp;
 
 	temp = g_data.enver;
 	while (temp)
@@ -29,7 +29,7 @@ int is_exist(char *var, char *val)
 	return (0);
 }
 
-void func(char *var , char *val)
+void	func(char *var, char *val)
 {
 	if (is_exist(var, val) == 0)
 		ft_env_tadd_back(&(g_data.enver), ft_env_new(var, val));
@@ -38,11 +38,11 @@ void func(char *var , char *val)
 			ft_env_tadd_back(&(g_data.enver), ft_env_new(var, ft_strdup(" ")));
 }
 
-void    ft_export(t_cmd *cmd)
+void	ft_export(t_cmd *cmd)
 {
-	char *var;
-	char *val;
-	t_list *l;
+	char	*var;
+	char	*val;
+	t_list	*l;
 
 	l = cmd->args;
 	if (ft_lstsize(cmd->args) == 0)
@@ -57,11 +57,10 @@ void    ft_export(t_cmd *cmd)
 			return ;
 		}
 		else
-		{   
+		{
 			cpy_var_val(l->content, var, val, '=');
-			func(var ,val);
+			func(var, val);
 		}
 		l = l->next;
 	}
-	// printf("****> %s\n", ft_env_last(g_data.enver)->variable);
 }
