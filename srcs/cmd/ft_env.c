@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 22:08:51 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/27 01:09:38 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/27 15:53:04 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_env(t_cmd *cmd, int is)
 	e = g_data.enver;
 	while (e)
 	{
-		if (!ft_strcmp(e->value, "") && !ft_strcmp(e->value, ""))
+		if (!ft_strcmp(e->variable, "") && !ft_strcmp(e->value, ""))
 		{
 			e = e->next;
 			continue ;
