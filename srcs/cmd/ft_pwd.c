@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:03:53 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/26 19:27:24 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:07:38 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ char	*set_pwd(char *new_path)
 	{
 		if (!ft_strcmp(e->variable, "PWD"))
 		{
+			free(e->value);
 			e->value = ft_strdup(new_path);
+			free(new_path);
 			break ;
 		}
 		e = e->next;

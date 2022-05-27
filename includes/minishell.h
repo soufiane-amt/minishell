@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/26 19:36:16 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/27 01:32:31 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@
 # define TOO_MANY_ARGS "too many arguments."
 
 # define OTHER_ERR "ERROR!"
- 
+
 # define NO_F_OR_D "No such file or directory!"
 
 //file not found error
@@ -171,7 +171,7 @@ void			ft_collect_data(void);
 //builtin funcs
 void			ft_cd(t_cmd *cmd);
 void			ft_echo(t_cmd *cmd);
-void			ft_env(int is);
+void			ft_env(t_cmd *cmd, int is);
 void			ft_exit(void);
 void			ft_export(t_cmd *cmd);
 char			*ft_pwd(void);
@@ -200,7 +200,7 @@ int				ft_is_quote(char c);
 int				ft_ispace(char c);
 int				ft_is_redirection(char *str);
 char			*ft_itoa(int n);
-int				ft_is_redi_str(char* s);
+int				ft_is_redi_str(char *s);
 
 //_char
 char			*_char(char *str);
@@ -300,6 +300,7 @@ char			*get_env(char *str);
 //utils expo
 int				size_var_val(char *str, int x, char c);
 void			cpy_var_val(char *str, char *var, char *val, char c);
+int				is_id(char *var);
 
 //extractors
 int				extract_redir(t_cmd *cmd, char *str, int *i);

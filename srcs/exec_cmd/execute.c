@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:13:23 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/26 19:36:33 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/27 01:23:31 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	exec_cmd_in_child_process(t_cmd *cmd, int cmd_type)
 		execve (cmd->f_cmd[0], cmd->f_cmd, g_data.env);
 	else
 		exec_built_cmd(cmd, cmd_type);
-	((*g_data.status.exit_code)) = 1;
 	exit(1);
 }
 
@@ -63,14 +62,14 @@ void	exec_cmd(t_cmd *cmd)
 		chstatus(OTHER_ERR, NULL, 1);
 		return ;
 	}
-	if (id == 0 && cmd_type < 3)
+	if (id == 0 && cmd_type < 5)
 	{
 		g_data.is_running = 1;
 		exec_cmd_in_child_process(cmd, cmd_type);
 	}
 	if (!id)
 		exit(1);
-	if (cmd_type >= 3 && !g_data.input_piped)
+	if (cmd_type >= 5 && !g_data.input_piped)
 		exec_built_cmd(cmd, cmd_type);
 	close_fd(cmd, 0);
 }

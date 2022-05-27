@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:27 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/24 19:48:17 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/26 22:38:57 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ t_env	*ft_env_new(char *var, char *val)
 		chstatus(MEMORY_LACK, NULL, 30);
 		return (NULL);
 	}
-	first_list->variable = var;
-	first_list->value = val;
+	first_list->variable = ft_strdup(var);
+	first_list->value = ft_strdup(val);
 	first_list->next = NULL;
+	free(var);
+	free(val);
 	return (first_list);
 }

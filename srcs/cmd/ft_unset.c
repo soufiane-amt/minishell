@@ -3,46 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:03:57 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/27 01:33:55 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	is_ex(char *var, char *arg)
+int	is_id(char *var)
 {
-	if (!ft_strcmp(var, arg))
-		return ;
-	else if ((var[0] >= 'a' || var[0] >= 'z')
-		&& (var[0] >= 'A' || var[0] <= 'Z'))
-		printf("unset: `%s': not a valid identifier", var);
+	if ((var[0] >= 'a' && var[0] <= 'z')
+		|| (var[0] >= 'A' && var[0] <= 'Z') || var[0] == '_')
+		return (1);
+	return (0);
 }
 
 void	ft_unset(t_cmd *cmd)
 {
 	t_env	*e;
 	t_list	*arg;
-	char	*var;
 
 	arg = cmd->args;
 	if (!arg)
 		return ;
 	while (arg)
 	{
+		if (is_id((char *)arg->content) == 0)
+			chstatus("not a valid identifier\n", NULL, 1);
 		e = g_data.enver;
 		while (e)
 		{
-			var = e->variable;
-			is_ex(e->variable, arg->content);
+			if (!ft_strcmp(e->variable, (char *)arg->content))
+			{
+				free(e->value);
+				free(e->variable);
+				e->value = ft_strdup("");
+				e->variable = ft_strdup("");
+			}
 			e = e->next;
-		}
-		if (e)
-		{
-			e->value = "";
-			e->variable = "";
 		}
 		arg = arg->next;
 	}

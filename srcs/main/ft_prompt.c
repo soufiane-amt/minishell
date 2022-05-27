@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/26 19:38:27 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/27 01:44:55 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	open_prompt(char **env)
 			break ;
 		}
 		ft_collect_data();
-		if (!(*g_data.status.exit_code) && check_user_input(g_data.input))
+		if ((!(*g_data.status.exit_code)) && check_user_input(g_data.input))
 			parse_and_execute();
 		if ((*g_data.status.exit_code))
 			notify_error(g_data.status.status, NULL);

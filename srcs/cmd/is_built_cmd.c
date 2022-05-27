@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:38:28 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/26 19:26:13 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/27 01:04:46 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,17 @@ int	is_built_cmd(t_cmd *cmd)
 		return (1);
 	else if (!ft_strcmp(cmd->cmd, "pwd"))
 		return (2);
-	else if (!ft_strcmp(cmd->cmd, "unset"))
-		return (3);
 	else if (!ft_strcmp(cmd->cmd, "env"))
+		return (3);
+	else if (!ft_strcmp(cmd->cmd, "export") && !cmd->args)
 		return (4);
-	else if (!ft_strcmp(cmd->cmd, "export"))
+	else if (!ft_strcmp(cmd->cmd, "export") && cmd->args)
 		return (5);
 	else if (!ft_strcmp(cmd->cmd, "cd"))
 		return (6);
-	else if (!ft_strcmp(cmd->cmd, "exit"))
+	else if (!ft_strcmp(cmd->cmd, "unset"))
 		return (7);
+	else if (!ft_strcmp(cmd->cmd, "exit"))
+		return (8);
 	return (0);
 }

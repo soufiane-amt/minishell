@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:01:51 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/18 15:47:49 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/27 01:34:25 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,27 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*substr;
 	size_t	i;
 	size_t	j;
+	char	*str;
 
-	i = -1;
-	j = 0;
-	if (!s)
-		return (NULL);
-	if (len > (size_t)ft_strlen(s) + 1)
-		len = ft_strlen(s);
-	substr = (char *) malloc (sizeof(char) * (len + 1));
-	if (!substr)
+	str = (char *) malloc(sizeof(*s) * (len + 1));
+	if (!str)
 	{
 		chstatus(MEMORY_LACK, NULL, 30);
 		return (NULL);
 	}
-	while (s[++i])
+	i = 0;
+	j = 0;
+	while (s[i])
 	{
 		if (i >= start && j < len)
 		{
-			substr[j] = s[i];
+			str[j] = s[i];
 			j++;
 		}
+		i++;
 	}
-	substr[j] = 0;
-	return (substr);
+	str[j] = 0;
+	return (str);
 }
