@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/27 01:32:31 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/28 23:16:11 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <editline/readline.h>
 # include <stddef.h>
 # include <signal.h>
 # include <string.h>
 # include <fcntl.h>
 # include <limits.h>
 # include <termios.h>
-
+# include <sys/ioctl.h>
 //SPECIAL CHARACTERS
 # define PIPE       0x00000007c
 //Redirection input / output
@@ -118,6 +117,7 @@ typedef struct s_data
 	int			error_status;
 	int			exit_the_program;
 	int			is_running;
+	int			exit_herdoc;
 }	t_data;
 
 typedef struct s_std
@@ -301,6 +301,7 @@ char			*get_env(char *str);
 int				size_var_val(char *str, int x, char c);
 void			cpy_var_val(char *str, char *var, char *val, char c);
 int				is_id(char *var);
+char			*ft_charjoin(char *s1, char c);
 
 //extractors
 int				extract_redir(t_cmd *cmd, char *str, int *i);

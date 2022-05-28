@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 23:51:58 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/27 01:45:18 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/28 18:20:30 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_init_t_data(void)
 	g_data.call_nbr = 0;
 	g_data.process_nbr = 1;
 	g_data.all_paths = NULL;
-	g_data.mypath = NULL;
+	g_data.mypath =  NULL;
 	g_data.fds = NULL;
 	g_data.spliter_sucess = 1;
 }
