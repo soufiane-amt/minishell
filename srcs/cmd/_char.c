@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 13:51:36 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/29 00:12:19 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/29 00:35:14 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	expand_quotes(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '$' && really(str, i, -5) != 0)
+		if (str[i] == '$' && really(str, i, -5) != 0 && str[i + 1])
 			str[i] = -7;
 		i++;
 	}

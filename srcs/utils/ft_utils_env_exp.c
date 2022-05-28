@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:01:56 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/28 18:56:16 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/29 00:42:50 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ char	*get_env(char *var)
 			return (e->value);
 			break ;
 		}
-		printf("%s\n", ft_env_last(g_data.enver)->value);
-		printf("%s\n", ft_env_last(g_data.enver)->variable);
 		e = e->next;
 	}
 	return ("");

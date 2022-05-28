@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:10:00 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/29 00:51:01 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,7 @@ int	add_path(t_cmd *cmd, char *t_command)
 	if (!access(cmd->f_cmd[0], F_OK))
 	{
 		if (!access(cmd->f_cmd[0], X_OK))
-		{
 			return (1);
-		}
 		else
 		{
 			notify_error(PERMISSION_DENIED, cmd->cmd);
