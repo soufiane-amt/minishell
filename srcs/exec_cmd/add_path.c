@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:10:00 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/29 00:51:01 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/29 22:46:45 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	add_path(t_cmd *cmd, char *t_command)
 			return (1);
 		}
 	}
-	if (!test_paths(cmd))
+	if (cmd->f_cmd[0] && !test_paths(cmd))
 		return (0);
 	notify_error(CMD_NOT_FOUND, cmd->cmd);
 	((*g_data.status.exit_code)) = 127;
