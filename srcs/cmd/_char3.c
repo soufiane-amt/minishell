@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _char3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:35:20 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/25 20:03:42 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/30 18:50:31 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	get_value_from_enver(char **st, char *var)
 		free(forfree);
 		free(ffree);
 	}
-	else if (!getenv(var))
+	else if (!ft_strcmp(get_env(var), ""))
 	{
 		forfree = *st;
 		*st = ft_strjoin(*st, "");

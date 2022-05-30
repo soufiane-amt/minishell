@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:03:53 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/27 00:07:38 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/30 17:29:22 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*set_pwd(char *new_path)
 		}
 		e = e->next;
 	}
-	return (e->value);
+	return (new_path);
 }
 
 char	*ft_pwd(void)

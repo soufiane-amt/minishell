@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:25:21 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/28 18:40:15 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:11:12 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	cpy_var(char *str, char *var, char c)
 		i++;
 	while (str[i] && str[i] != c
 		&& ((str[i] >= 'A' && str[i] <= 'Z')
-			|| (str[i] >= 'a' && str[i] <= 'z') || str[i] == '?'))
+			|| (str[i] >= 'a' && str[i] <= 'z') || (str[i] >= '0' && str[i] <= '9') || str[i] == '?'))
 	{
 		var[j] = str[i];
 		i++;
