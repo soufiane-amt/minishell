@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 15:02:55 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/27 16:06:48 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/30 20:58:21 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	go_to(t_list *arg, char *str)
 
 	if (!arg)
 	{
-		chdir(get_env("HOME"));
+		chdir(getenv("HOME"));
 		set_newpwd();
 	}
 	else if (!ft_strcmp((char *)arg->content, "-"))
@@ -71,7 +71,7 @@ void	go_to(t_list *arg, char *str)
 	}
 	else if (((char *)arg->content)[0] == '~')
 	{
-		path = ft_strjoin(getenv("HOME"), st(arg->content));
+		path = ft_strjoin(get_env("HOME"), st(arg->content));
 		if (chdir(path))
 			printf("minishell: cd: %s: %s\n", path, strerror(2));
 		set_newpwd();

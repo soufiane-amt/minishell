@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collect_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:18:24 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/25 22:52:30 by samajat          ###   ########.fr       */
+/*   Updated: 2022/05/30 20:56:05 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,7 @@ void	join_back_slash(void)
 
 void	generate_paths(void)
 {
-	g_data.path = getenv("PATH");
-	if (!g_data.path)
-	{
-		notify_error (OTHER_ERR, NULL);
-		chstatus("  ", NULL, 127);
-		return ;
-	}
+	g_data.path = get_env("PATH");
 	g_data.all_paths = ft_split (g_data.path, ':');
 	if (!g_data.all_paths)
 	{

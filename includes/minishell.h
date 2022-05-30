@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:17:06 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/28 23:16:11 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/30 21:39:48 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ typedef struct s_data
 	int			exit_the_program;
 	int			is_running;
 	int			exit_herdoc;
+	int			command_executing;
 }	t_data;
 
 typedef struct s_std

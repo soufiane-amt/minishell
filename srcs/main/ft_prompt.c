@@ -6,7 +6,7 @@
 /*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 23:00:44 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/30 18:14:03 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/30 21:33:41 by eelmoham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,16 @@ void	open_prompt(char **env)
 	while (!g_data.exit_the_program)
 	{
 		g_data.input = readline("𝖒𝖎𝖓𝖎𝖘𝖍𝖊𝖑𝖑➜");
-		// printf("readline exit\n");
 		if (!g_data.input)
 		{
-			printf("exit\n");
+			printf("\033[1A\033[11Cexit\n");
 			break ;
 		}
 		ft_collect_data();
 		if ((!(*g_data.status.exit_code)) && check_user_input(g_data.input))
+		{
 			parse_and_execute();
+		}
 		if ((*g_data.status.exit_code))
 			notify_error(g_data.status.status, NULL);
 		free_t_data();
