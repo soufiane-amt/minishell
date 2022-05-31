@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_open_herdoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 21:53:22 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/29 00:02:21 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/31 23:51:02 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_open_prompt(int fd, t_cmd *cmd, char *delimiter)
 {
 	char	*str;
-	// static	int	i;
 
 	str = ft_strdup("");
 	if (!str)
@@ -27,16 +26,12 @@ void	ft_open_prompt(int fd, t_cmd *cmd, char *delimiter)
 	{
 		ft_putstr_fd(str, fd);
 		free(str);
-		str = readline("heredoc>");
+		str = readline("heredoc> ");
 		if (!str || !ft_strcmp(str, delimiter))
 			break ;
-		if(str[0])
+		if (str[0])
 			str = ft_charjoin(str, '\n');
-		// if (i >= 1)
-		// 	ft_putstr_fd("\n", fd);
-		// i++;
 	}
-	// ft_putstr_fd("\n", fd);
 	close(fd);
 	if (cmd->input.fd != STDIN_FILENO)
 		close (cmd->input.fd);
@@ -47,7 +42,6 @@ void	ft_open_heredoc(t_cmd *cmd, char *delimiter)
 {
 	int	fd;
 
-	g_data.exit_herdoc = FALSE;
 	fd = open(".temp", O_CREAT | O_RDWR | O_TRUNC, 0777);
 	if (fd < 0)
 	{
@@ -55,5 +49,8 @@ void	ft_open_heredoc(t_cmd *cmd, char *delimiter)
 		return ;
 	}
 	ft_open_prompt(fd, cmd, delimiter);
-	cmd->input.fd = open(".temp", O_RDWR, 0777);
+	if (!g_data.exit_herdoc)
+		cmd->input.fd = open(".temp", O_RDWR, 0777);
+	else
+		g_data.command_allowed_to_exec = FALSE;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 21:13:23 by samajat           #+#    #+#             */
-/*   Updated: 2022/05/30 22:17:04 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/31 23:21:53 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,16 @@ void	close_fd(t_cmd *cmd, int close_all)
 	}
 }
 
-void sig_quit(int sig)
+void	sig_quit(int sig)
 {
 	(void)sig;
 	rl_replace_line("\n", 1);
 	exit(1);
 }
+
 void	exec_cmd_in_child_process(t_cmd *cmd, int cmd_type)
 {
-	signal(SIGQUIT, sig_quit);		
+	signal(SIGQUIT, sig_quit);
 	if (cmd->input.fd != STDIN_FILENO)
 		dup2 (cmd->input.fd, STDIN_FILENO);
 	if (cmd->output.fd != STDOUT_FILENO)
@@ -56,7 +57,6 @@ void	exec_cmd_in_child_process(t_cmd *cmd, int cmd_type)
 	exit(1);
 }
 
-
 void	exec_cmd(t_cmd *cmd)
 {
 	int	id;
@@ -64,14 +64,13 @@ void	exec_cmd(t_cmd *cmd)
 
 	cmd_type = is_built_cmd(cmd);
 	g_data.is_running = 1;
-	g_data.command_executing = TRUE;
 	id = fork();
 	if (id < 0)
 	{
 		chstatus(OTHER_ERR, NULL, 1);
 		return ;
 	}
-	if (id == 0 && cmd_type < 5)
+	if (id == 0 && cmd_type < 5 && g_data.command_allowed_to_exec)
 	{
 		g_data.is_running = 1;
 		exec_cmd_in_child_process(cmd, cmd_type);
@@ -81,5 +80,5 @@ void	exec_cmd(t_cmd *cmd)
 	if (cmd_type >= 5 && !g_data.input_piped)
 		exec_built_cmd(cmd, cmd_type);
 	close_fd(cmd, 0);
-	g_data.command_executing = FALSE;
+	g_data.exit_herdoc = TRUE;
 }

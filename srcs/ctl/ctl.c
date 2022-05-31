@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ctl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eelmoham <eelmoham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:15:27 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/30 22:55:17 by eelmoham         ###   ########.fr       */
+/*   Updated: 2022/05/31 23:50:29 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,7 @@ void	ctl(int sig)
 	struct termios	config;
 
 	(void)sig;
-	if (g_data.is_running)
-	{
-		g_data.is_running = 0;
-		return ;
-	}
-	if(!g_data.exit_herdoc)
+	if (!g_data.exit_herdoc)
 	{
 		configure_terminal(&config);
 		rl_replace_line("", 0);
@@ -55,7 +50,6 @@ void	ctl(int sig)
 		return ;
 	}
 }
-
 
 void	signalize(void)
 {
