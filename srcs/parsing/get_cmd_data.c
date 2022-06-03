@@ -6,7 +6,7 @@
 /*   By: samajat <samajat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 19:07:02 by eelmoham          #+#    #+#             */
-/*   Updated: 2022/05/29 22:47:37 by samajat          ###   ########.fr       */
+/*   Updated: 2022/06/03 20:15:15 by samajat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 void	get_cmd(t_cmd *cmd)
 {
-	cmd->cmd = ft_strdup(cmd->ex_elements->content);
+	if (ft_strcmp(cmd->ex_elements->content, "<<"))
+		cmd->cmd = ft_strdup(cmd->ex_elements->content);
+	else if (!ft_strcmp(cmd->ex_elements->content, "<<")
+				&& ft_lstsize(cmd->ex_elements) >= 3)
+		cmd->cmd = ft_strdup(cmd->ex_elements->next->next->content);
+	else
+		cmd->cmd = ft_strdup(cmd->ex_elements->content);
 	if (!cmd->cmd)
 		chstatus(MEMORY_LACK, NULL, 30);
 }
